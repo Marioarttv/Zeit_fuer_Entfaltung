@@ -4,28 +4,39 @@
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="">
-                <img src="images/Logo-e7548854-1920w.webp" alt="Zeit für Entfaltung" />
+                <img src="images/Schildi.png" alt="Schildi Logo" class="navbar-logo" />
+                <span class="brand-text">Zeit für Entfaltung</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="">Willkommen</a>
+                        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                            <span class="nav-text">Willkommen</span>
+                        </NavLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ueber-mich">Über Mich</a>
+                        <NavLink class="nav-link" href="ueber-mich">
+                            <span class="nav-text">Über Mich</span>
+                        </NavLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="schilli-konzept">Das Schilli Konzept</a>
+                        <NavLink class="nav-link" href="schilli-konzept">
+                            <span class="nav-text">Das Schilli Konzept</span>
+                        </NavLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="angebot">Mein Angebot</a>
+                        <NavLink class="nav-link" href="angebot">
+                            <span class="nav-text">Mein Angebot</span>
+                        </NavLink>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="kontakt">Kontakt</a>
+                        <NavLink class="nav-link" href="kontakt">
+                            <span class="nav-text">Kontakt</span>
+                        </NavLink>
                     </li>
                 </ul>
             </div>
@@ -45,9 +56,9 @@
                     <p>jeannette.froehlich@yahoo.de</p>
                     <p>Whatsapp: 06031-9648368</p>
                 </div>
-                <div class="col-md-6 text-md-end">
+                <div class="col-md-6 text-md-end d-flex align-items-center justify-content-md-end justify-content-center">
                     <div class="social-links">
-                        <a href="#" target="_blank" aria-label="Instagram">
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
@@ -55,7 +66,8 @@
             </div>
             <div class="footer-bottom mt-4">
                 <a href="impressum">Impressum</a>
-                <p class="mt-2">&copy; @DateTime.Now.Year - Zeit für Entfaltung</p>
+                <a href="datenschutz" class="ms-3">Datenschutz</a>
+                <p>&copy; @DateTime.Now.Year - Zeit für Entfaltung</p>
             </div>
         </div>
     </footer>
