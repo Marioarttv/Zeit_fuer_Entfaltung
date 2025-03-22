@@ -1,0 +1,436 @@
+﻿@page "/schilli-konzept"
+@using Microsoft.AspNetCore.Components.Web
+
+<PageTitle>Das Schilli Konzept - Zeit für Entfaltung</PageTitle>
+
+<style>
+    /* Schilli Konzept Page Styles */
+    .schilli-page {
+        font-family: 'Montserrat', sans-serif;
+        color: #4e4636;
+    }
+
+    .schilli-hero {
+        text-align: center;
+        padding: 3rem 0;
+        background-color: #fff;
+    }
+
+        .schilli-hero img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
+            margin-bottom: 2rem;
+        }
+
+    .intro-section {
+        padding: 4rem 0;
+        background-color: #f5f4f1;
+    }
+
+    .intro-text {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+        .intro-text p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+            .intro-text p:first-of-type {
+                font-size: 1.2rem;
+                font-weight: 500;
+                color: #706157;
+            }
+
+    .avatar-container {
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .avatar-image {
+        max-width: 280px;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+    }
+
+    .offerings-section {
+        padding: 5rem 0;
+        background-color: #fff;
+    }
+
+    .offerings-heading {
+        text-align: center;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        margin-bottom: 3rem;
+    }
+
+    .slides-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .slide-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .offerings-details {
+        max-width: 900px;
+        margin: 0 auto 3rem;
+        padding: 2rem;
+        background-color: #f5f4f1;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .offerings-details-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .offerings-list {
+        margin-bottom: 2rem;
+    }
+
+        .offerings-list h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4e4636;
+            margin-bottom: 1.5rem;
+        }
+
+        .offerings-list ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 2rem;
+        }
+
+        .offerings-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+            .offerings-list li::before {
+                content: '•';
+                position: absolute;
+                left: 10px;
+                color: #b0b1a8;
+                font-size: 1.2rem;
+            }
+
+    .themes-container {
+        margin-top: 3rem;
+    }
+
+    .themes-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.5rem;
+        color: #4e4636;
+        margin-bottom: 1.5rem;
+    }
+
+    .themes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .theme-item {
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 6px;
+        text-align: center;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .theme-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+    .flexible-note {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        font-style: italic;
+    }
+
+    .support-section {
+        padding: 1rem 2rem;
+        background-color: #fff;
+        border-radius: 8px;
+        margin-top: 2rem;
+    }
+
+        .support-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4e4636;
+            margin-bottom: 1.5rem;
+        }
+
+        .support-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .support-section li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+            .support-section li::before {
+                content: '→';
+                position: absolute;
+                left: 0;
+                color: #706157;
+            }
+
+    .pricing-section {
+        padding: 4rem 0;
+        background-image: linear-gradient(135deg, #b0b1a8 0%, #706157 100%);
+        color: white;
+        text-align: center;
+    }
+
+    .pricing-container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .pricing-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .pricing-amount {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin: 1.5rem 0;
+        color: #fff;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .pricing-note {
+        font-style: italic;
+        margin: 1.5rem 0;
+        font-size: 1.1rem;
+    }
+
+    .closing {
+        margin-top: 2rem;
+    }
+
+    .contact-button {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background-color: white;
+        color: #706157;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-top: 2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background-color: #f5f4f1;
+        }
+
+        .contact-button i {
+            margin-right: 0.5rem;
+        }
+
+    @@media (max-width: 992px) {
+        .themes-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .offerings-heading {
+            font-size: 2rem;
+        }
+
+        .pricing-amount {
+            font-size: 2.8rem;
+        }
+
+        .intro-text {
+            padding: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .themes-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .offerings-heading {
+            font-size: 1.8rem;
+        }
+
+        .pricing-amount {
+            font-size: 2.2rem;
+        }
+
+        .pricing-container {
+            padding: 1.5rem;
+        }
+    }
+</style>
+
+<div class="schilli-page">
+    <!-- Hero Section -->
+    <section class="schilli-hero">
+        <div class="container">
+            <img src="images/SchilliKonzept.png" alt="Schilli Schildkröte Konzept" class="img-fluid" />
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-text">
+                <p>Hey, ich bin Schilli. Ich stehe fest an der Seite der Kinder, um sie auf ihrer Reise des Persönlichkeitswachstums zu unterstützen. In meinem farbenfrohen Panzer spiegelt sich die bunte Vielfalt wider, die jeden Einzelnen so einzigartig macht.</p>
+
+                <p>Gemeinsam erforschen wir die Tiefe ihrer Persönlichkeiten, damit sie ihre individuellen Stärken erkennen und schätzen lernen.</p>
+
+                <p>Mein Ziel ist es, ihnen zu vermitteln, dass ihre Einzigartigkeit eine Quelle der Kraft ist, auf die sie stolz sein können. Wir formen gemeinsam eine positive Selbstwahrnehmung, damit sie mit Zuversicht und Selbstbewusstsein den Weg zu ihrer besten Version gehen können.</p>
+
+                <div class="avatar-container">
+                    <img src="images/SchildiAvatar.png" alt="Schilli Avatar" class="avatar-image img-fluid" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offerings Section -->
+    <section class="offerings-section">
+        <div class="container">
+            <h2 class="offerings-heading">Was dich erwartet</h2>
+
+            <div class="slides-container">
+                <div class="slide-item col-md-5">
+                    <img src="images/Schildislide1.webp" alt="Schilli Konzept Slide 1" class="slide-image img-fluid" />
+                </div>
+                <div class="slide-item col-md-5">
+                    <img src="images/SchildiSlide2.webp" alt="Schilli Konzept Slide 2" class="slide-image img-fluid" />
+                </div>
+            </div>
+
+            <div class="offerings-details">
+                <img src="images/WasDichErwartet.webp" alt="Was Dich Erwartet Details" class="offerings-details-image" />
+
+                <div class="offerings-list">
+                    <p>Mit dem Konzept und dem Starterpaket kannst du direkt starten und Kinderstärkerkurse anbieten. Ob in Schule, Kitas, freie Kurse oder Eltern - Kind-Format ist dir ganz freigestellt.</p>
+
+                    <h3>Du erhältst:</h3>
+                    <ul>
+                        <li>8 fertige sofort umsetzbare Kurskonzepte à 4 Stunden (5-12 Jahre)</li>
+                        <li>1 Ausgearbeiteter Workshop zum Thema Prüfungsmut statt Prüfungsangst</li>
+                        <li>1 ausgearbeiteter Workshop zum Thema Resilienz in Familie</li>
+                        <li>Einblick in die Traumapädagogik</li>
+                        <li>Selbstfürsorgezeit für Dich</li>
+                        <li>Toolbox</li>
+                        <li>Starterpaket</li>
+                        <li>Persönliche Betreuung</li>
+                    </ul>
+
+                    <div class="themes-container">
+                        <h3 class="themes-title">Die Themen sind:</h3>
+                        <div class="themes-grid">
+                            <div class="theme-item">Vielfalt</div>
+                            <div class="theme-item">Selbstliebe</div>
+                            <div class="theme-item">Freundschaft</div>
+                            <div class="theme-item">Glück</div>
+                            <div class="theme-item">Prüfungsmut statt Prüfungsangst</div>
+                            <div class="theme-item">Stark in der Schule</div>
+                            <div class="theme-item">Klang und Düfte</div>
+                            <div class="theme-item">Gefühle in Verbindung</div>
+                            <div class="theme-item">Eltern-Kind-Kurs</div>
+                        </div>
+                    </div>
+
+                    <div class="flexible-note">
+                        <p>Du kannst dir die Stunden aber auch so zusammen stellen, wie es deine Kinder zur Zeit am besten abholt.</p>
+                    </div>
+
+                    <div class="support-section">
+                        <h3>Begleitung und Community</h3>
+                        <ul>
+                            <li>Begleitet wirst du: im 1:1 von mir</li>
+                            <li>Bist Teil der WhatsApp Schilli Kinderstärker Community</li>
+                            <li>Hast die Möglichkeit bei Austausch Zoom Abenden dabei zu sein</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-container">
+                <h2 class="pricing-title">Das Gesamtpaket erhältst du für</h2>
+                <div class="pricing-amount">799,00 €</div>
+
+                <div class="pricing-note">
+                    <p>Wenn du noch mehr Infos benötigst, können wir gerne einen Telefontermin vereinbaren.</p>
+                </div>
+
+                <div class="closing">
+                    <p>Herzliche Grüße<br />Jeannette</p>
+                </div>
+
+                <a href="https://wa.me/4960319648368?text=Hallo%2C%20ich%20habe%20Interesse%20an%20dem%20Schilli%20Schildkr%C3%B6te%20Kinderst%C3%A4rkerkonzepts.%20Kann%20ich%20bitte%20weitere%20Informationen%20erhalten%3F" class="contact-button">
+                    <i class="fab fa-whatsapp"></i> Per WhatsApp kontaktieren
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+@code {
+    // Component code here
+}
