@@ -1,0 +1,641 @@
+﻿@page "/humandesign"
+@using Microsoft.AspNetCore.Components.Web
+
+<PageTitle>Human Design - Zeit für Entfaltung</PageTitle>
+
+<style>
+    /* Human Design Begleitung Page Styles */
+    .hd-page {
+        font-family: 'Montserrat', sans-serif;
+        color: #4e4636;
+    }
+
+    .hd-hero {
+        position: relative;
+        min-height: 30vh;
+        background-color: #b0b1a8;
+        background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.8), rgba(112, 97, 87, 0.6));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        overflow: hidden;
+        margin-bottom: 3rem;
+    }
+
+        .hd-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+    .hero-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3.5rem;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .intro-section {
+        padding: 3rem 0;
+        background-color: #fff;
+    }
+
+    .intro-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .intro-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.2rem;
+        color: #4e4636;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .intro-text {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+
+    .reading-why-section {
+        padding: 3rem 0;
+        background-color: #f5f4f1;
+    }
+
+    .reading-why-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
+    }
+
+    .reading-why-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.2rem;
+        color: #4e4636;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .oils-section {
+        padding: 4rem 0;
+        background-color: #fff;
+    }
+
+    .oils-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .oils-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.2rem;
+        color: #4e4636;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .services-section {
+        padding: 4rem 0;
+        background-color: #f5f4f1;
+    }
+
+    .services-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .services-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .service-card {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
+        margin-bottom: 2.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(112, 97, 87, 0.15);
+        }
+
+    .service-header {
+        background-color: #706157;
+        padding: 1.5rem;
+        color: white;
+    }
+
+    .service-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .service-price {
+        font-size: 1.3rem;
+        font-weight: 300;
+        opacity: 0.9;
+    }
+
+    .service-content {
+        padding: 2rem;
+    }
+
+    .service-description {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+        margin-bottom: 1.5rem;
+    }
+
+    .service-features-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.3rem;
+        color: #4e4636;
+        margin-bottom: 1rem;
+    }
+
+    .service-features-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .service-feature-item {
+        position: relative;
+        padding-left: 1.8rem;
+        margin-bottom: 0.8rem;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+        .service-feature-item:before {
+            content: '';
+            position: absolute;
+            top: 0.5rem;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #b0b1a8;
+        }
+
+    .service-cta {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+
+    .service-button {
+        display: inline-block;
+        background-color: #b0b1a8;
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+        .service-button:hover {
+            background-color: #706157;
+            transform: translateY(-3px);
+        }
+
+    .special-offer {
+        background: linear-gradient(135deg, #b0b1a8 0%, #706157 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        margin: 2rem 0 4rem;
+        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.2);
+    }
+
+    .special-offer-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .special-offer-text {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .kids-section {
+        padding: 4rem 0;
+        background-color: #fff;
+    }
+
+    .kids-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .kids-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .kids-intro {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .kids-cta {
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .kids-services-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.8rem;
+        color: #4e4636;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .kids-service-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        background-color: #f5f4f1;
+        border-radius: 8px;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+        .kids-service-item:hover {
+            transform: translateY(-3px);
+            background-color: #eeede9;
+        }
+
+    .kids-service-name {
+        flex: 1;
+        font-weight: 500;
+        font-size: 1.1rem;
+    }
+
+    .kids-service-price {
+        font-weight: 700;
+        color: #706157;
+        font-size: 1.1rem;
+        margin-left: 1rem;
+    }
+
+    .kids-package {
+        margin-top: 3rem;
+        padding: 2rem;
+        background-color: #f5f4f1;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
+    }
+
+    .kids-package-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.8rem;
+        color: #4e4636;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .kids-package-price {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #706157;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .kids-package-description {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-section {
+        padding: 4rem 0;
+        background-color: #706157;
+        color: white;
+        text-align: center;
+    }
+
+    .cta-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .cta-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-text {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background-color: white;
+        color: #706157;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background-color: #f5f4f1;
+        }
+
+    /* Responsive adjustments */
+    @@media (max-width: 992px) {
+        .service-content {
+            padding: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.8rem;
+        }
+
+        .intro-title, .reading-why-title, .oils-title, .services-title, .kids-title, .cta-title {
+            font-size: 2rem;
+        }
+
+        .special-offer-title {
+            font-size: 1.8rem;
+        }
+
+        .service-title {
+            font-size: 1.6rem;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .hero-title {
+            font-size: 2.3rem;
+        }
+
+        .intro-title, .reading-why-title, .oils-title, .services-title, .kids-title, .cta-title {
+            font-size: 1.8rem;
+        }
+
+        .service-header {
+            text-align: center;
+        }
+
+        .kids-service-item {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .kids-service-price {
+            margin-left: 0;
+            margin-top: 0.5rem;
+        }
+    }
+</style>
+
+<div class="hd-page">
+    <!-- Hero Section -->
+    <section class="hd-hero">
+        <h1 class="hero-title">Human Design Begleitung</h1>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="intro-container">
+            <h2 class="intro-title">Was ist Human Design?</h2>
+            <p class="intro-text">
+                Human Design ist ein faszinierendes System, das die Weisheit alter Traditionen wie der Astrologie, des I Ging, der Kabbala und der Chakrenlehre mit moderner Wissenschaft verbindet. Es bietet dir eine einzigartige „Landkarte" deines Wesens und zeigt dir, wer du wirklich bist – frei von äußeren Konditionierungen und Erwartungen. Human Design hilft dir, deine natürlichen Talente, deine Lebensenergie und deine individuellen Entscheidungsstrategien zu verstehen, sodass du ein Leben in Einklang mit deiner wahren Natur führen kannst.
+            </p>
+        </div>
+    </section>
+
+    <!-- Why Reading with Me Section -->
+    <section class="reading-why-section">
+        <div class="reading-why-container">
+            <h2 class="reading-why-title">Warum ein Reading bei mir?</h2>
+            <p class="intro-text">
+                Ein Human Design Reading bei mir ist weit mehr als nur die Vermittlung von Wissen. Ich lege besonderen Wert darauf, dir die Informationen in einer Weise zugänglich zu machen, die dich wirklich berührt und in deinem Alltag unterstützt. Mein Ansatz ist individuell, einfühlsam und praxisnah – es geht darum, dich nicht nur zu informieren, sondern dir konkrete Werkzeuge an die Hand zu geben, die dich sofort weiterbringen. Gemeinsam erkunden wir deine Stärken, Potenziale und Herausforderungen, sodass du Klarheit und Selbstbewusstsein gewinnst.
+            </p>
+            <p class="intro-text">
+                Ein Reading bei mir eröffnet dir nicht nur einen tieferen Einblick in dein Design, sondern gibt dir auch das Vertrauen, deinen Weg authentisch zu gehen. Es ist mein Herzenswunsch, dir dabei zu helfen, dein volles Potenzial zu leben – mit Leichtigkeit, Freude und einem tiefen Gefühl der Erfüllung.
+            </p>
+        </div>
+    </section>
+
+    <!-- Human Design & Essential Oils Section -->
+    <section class="oils-section">
+        <div class="oils-container">
+            <h2 class="oils-title">Human Design und Ätherische Öle – Eine kraftvolle Verbindung</h2>
+            <p class="intro-text">
+                Human Design und ätherische Öle bilden eine wunderbare Symbiose, um Körper, Geist und Seele in Einklang zu bringen. Während Human Design dir dabei hilft, deine einzigartige Energie, deine Stärken und Herausforderungen zu verstehen, unterstützen ätherische Öle dich auf einer feinstofflichen Ebene, diese Erkenntnisse in deinem Alltag zu integrieren.
+            </p>
+            <p class="intro-text">
+                Jedes Human Design Chart ist so individuell wie ein Fingerabdruck. Deine Energiezentren, Kanäle und Profile zeigen, welche Themen für dich besonders wichtig sind – sei es, deine innere Ruhe zu stärken, deine Kreativität zu fördern oder emotionale Blockaden zu lösen. Ätherische Öle wirken hier als natürliche Helfer, die gezielt auf diese Themen eingehen können.
+            </p>
+            <p class="intro-text">
+                Ich kombiniere in meinen Readings das Wissen über dein Human Design mit der gezielten Anwendung ätherischer Öle, die auf dich und deine individuellen Bedürfnisse abgestimmt sind. Gemeinsam entwickeln wir eine ganzheitliche Strategie, die dich nicht nur auf einer mentalen, sondern auch auf einer körperlichen und emotionalen Ebene stärkt. So kannst du die Kraft von Human Design noch tiefer erleben und gleichzeitig die unterstützende Wirkung der Natur in deinen Alltag integrieren.
+            </p>
+            <p class="intro-text">
+                Diese Verbindung ermöglicht es dir, in deine Balance zu kommen, deine Potenziale zu entfalten und dein Leben auf allen Ebenen in Harmonie zu bringen.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="services-container">
+            <h2 class="services-title">Mein Angebot für Dich</h2>
+
+            <!-- Basic Reading Service -->
+            <div class="service-card">
+                <div class="service-header">
+                    <h3 class="service-title">Basic Reading</h3>
+                    <p class="service-price">Energieausgleich: 111,00 €</p>
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Ein umfassendes Reading (1-1,5 Stunden) per Zoom, um dein Human Design zu entdecken und zu verstehen.
+                    </p>
+                    <div class="service-features">
+                        <h4 class="service-features-title">Inhalt:</h4>
+                        <ul class="service-features-list">
+                            <li class="service-feature-item">
+                                <strong>Dein Energietyp</strong> - Welche Aura hast du? In Human Design beschreibt deine Aura, wie du Energie nach außen trägst und wahrgenommen wirst – ist sie offen, einladend, fokussiert oder vielleicht durchdringend?
+                            </li>
+                            <li class="service-feature-item">
+                                <strong>Die Strategie</strong> - Dein innerer Kompass: In Human Design ist deine Strategie der Schlüssel, um harmonisch mit anderen zu interagieren und Hindernisse im Leben zu minimieren. Sie zeigt dir, wie du auf natürliche Weise auf das Leben reagieren oder agieren kannst, um im Einklang mit deinem Design zu bleiben und weniger Widerstände zu erfahren.
+                            </li>
+                            <li class="service-feature-item">
+                                <strong>Deine Autorität</strong> - Dein Entscheidungskompass: In Human Design ist deine Autorität dein innerer Wegweiser, um wichtige Entscheidungen zu treffen, die wirklich zu dir passen. Sie hilft dir, aus deinem wahren Selbst heraus zu handeln und sicherzustellen, dass deine Entscheidungen in Einklang mit deinem Design und deinem Wohlbefinden stehen.
+                            </li>
+                            <li class="service-feature-item">
+                                <strong>Schatten- & Licht Aspekte deines Energietyps</strong> - Deine größten Herausforderungen: In Human Design zeigen dir die Schattenaspekte deines Energietyps, wo du oft auf Widerstände triffst oder aus der Balance gerätst. Sie weisen darauf hin, wo du genauer hinschauen darfst, um alte Muster anzunehmen, loszulassen und in den Fluss deines Designs zurückzufinden.
+                            </li>
+                            <li class="service-feature-item">
+                                <strong>Dein Profil:</strong> Im Human Design beschreibt dein Profil deine grundlegenden Persönlichkeitsmerkmale und Rollen im Leben. Es zeigt, wie du dich selbst wahrnimmst und wie andere dich erleben. Dein Profil beleuchtet sowohl Schatten- als auch Lichtaspekte und gibt dir wertvolle Hinweise, wie du deine Stärken gezielt einsetzen kannst, um dein volles Potenzial im Einklang mit deinem Design zu entfalten.
+                            </li>
+                            <li class="service-feature-item">
+                                <strong>Deine 9 Energiezentren:</strong> Im Human Design geben die Zentren Aufschluss darüber, welche Energie und Potenziale du mitbringst und stabil in dir trägst. Definierte Zentren zeigen, was du ausstrahlst und wie du andere beeinflusst. Offene oder undefinierte Zentren hingegen zeigen, wo du empfänglich für äußere Einflüsse bist und Energie von anderen aufnimmst. Sie laden dich ein, zu reflektieren, was wirklich zu dir gehört und wo du dich abgrenzen darfst.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="service-cta">
+                        <a href="kontakt" class="service-button">Reading buchen</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essential Oils Guide Service -->
+            <div class="service-card">
+                <div class="service-header">
+                    <h3 class="service-title">Ätherische Öle Guide passend zu deinem Human Design</h3>
+                    <p class="service-price">Energieausgleich: 69,00 €</p>
+                </div>
+                <div class="service-content">
+                    <p class="service-description">
+                        Du kennst dein Human Design und wünschst dir Unterstützung bei deinen Themen, durch die Kraft der ätherischen Öle?
+                    </p>
+                    <div class="service-features">
+                        <h4 class="service-features-title">Das erwartet Dich:</h4>
+                        <ul class="service-features-list">
+                            <li class="service-feature-item">1:1 Call per Zoom oder Telefon (ca. 1 Std)</li>
+                            <li class="service-feature-item">Wir sprechen über deine Chart und deine Herausforderungen im Alltag</li>
+                            <li class="service-feature-item">Passend zu deinen Themen erstelle ich dir deinen persönlichen Öle Guide</li>
+                            <li class="service-feature-item">1 Roll On mit Deiner individuellen Ölemischung</li>
+                        </ul>
+                    </div>
+                    <div class="service-cta">
+                        <a href="kontakt" class="service-button">Guide bestellen</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special Offer -->
+            <div class="special-offer">
+                <h3 class="special-offer-title">Special Angebot - Kombipaket</h3>
+                <p class="special-offer-text">
+                    Wenn du das Basic Reading buchst, erhältst du 25% Rabatt auf deinen Öle Guide.
+                </p>
+                <a href="kontakt" class="service-button">Kombi-Angebot sichern</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kids Section -->
+    <section class="kids-section">
+        <div class="kids-container">
+            <h2 class="kids-title">Human Design für Kinder - verstehen, begleiten, stärken</h2>
+            <p class="kids-intro">
+                Jedes Kind bringt eine einzigartige Energie mit – doch oft fällt es schwer, sie wirklich zu erkennen. Ein Human Design Reading zeigt dir, wie dein Kind auf natürliche Weise durchs Leben geht und wie du es optimal begleiten kannst. Wie bewegt sich dein Kind durch die Welt, und wie interagiert es am besten mit seiner Umwelt, um weniger Widerstände zu erleben? Welche Bereiche in deinem Kind sind stabil und geben ihm Sicherheit, und wo nimmt es viel von außen auf?
+            </p>
+            <p class="intro-text">
+                Je nach Lebensphase fließen weitere wichtige Faktoren ein, wie Ernährungstyp, Lerntyp oder ideale Umgebung. Du erfährst wie du dein Kind im Alltag individueller begleiten kannst, vom Aufstehen bis zum Finden einer passenden Abendroutine, entsprechend seiner Energie. Erlange Unterstützung bei den Themen Hausaufgaben und Schule und Vieles mehr.
+            </p>
+            <p class="intro-text">
+                Ein Reading hilft dir, dein Kind in seiner Einzigartigkeit zu verstehen und es liebevoll und authentisch zu begleiten – frei von Erwartungen und voller Vertrauen in seinen eigenen Weg.
+            </p>
+
+            <div class="kids-cta">
+                <a href="kontakt" class="service-button">
+                    Jetzt ein individuelles Reading buchen und entdecken, was wirklich in deinem Kind steckt!
+                </a>
+            </div>
+
+            <h3 class="kids-services-title">Angebote für Kinder und Familien:</h3>
+
+            <div class="kids-service-item">
+                <span class="kids-service-name">Basic Reading für Kinder: Pdf + Zoom 60 Min</span>
+                <span class="kids-service-price">89 €</span>
+            </div>
+
+            <div class="kids-service-item">
+                <span class="kids-service-name">Lernguide Human Design meets Lerncoaching: Pdf + Lernmethoden + Lernöl</span>
+                <span class="kids-service-price">69,00 €</span>
+            </div>
+
+            <div class="kids-service-item">
+                <span class="kids-service-name">Familienreading</span>
+                <span class="kids-service-price">249,00 €</span>
+            </div>
+
+            <div class="kids-package">
+                <h3 class="kids-package-title">Coaching Paket</h3>
+                <p class="kids-package-price">399,00 €</p>
+                <p class="kids-package-description">
+                    Basic Kids Reading + Lernguide + 3 Folgezoom Termine + pädagogische Impulse + Blick in die Familienkonstellation + Unterstützung durch Aromabegleitung
+                </p>
+                <p class="intro-text">
+                    Dieses Paket bietet dir nicht nur theoretisches Wissen, sondern eine praxisnahe, liebevolle Begleitung, um das Gelernte nachhaltig in euren Alltag zu integrieren. Durch die individuellen Zoom-Termine hast du die Möglichkeit, Fragen zu stellen, Herausforderungen zu besprechen und die Erkenntnisse Schritt für Schritt umzusetzen. Die pädagogischen Impulse helfen dir, dein Kind gezielt zu unterstützen – sei es im Umgang mit Emotionen, im sozialen Miteinander oder im schulischen Bereich.
+                </p>
+                <p class="intro-text">
+                    Es gibt dir die Möglichkeit, dein Kind nicht nur zu verstehen, sondern es gezielt und achtsam auf seinem individuellen Weg zu begleiten – mit Leichtigkeit, Vertrauen und in tiefer Verbindung.
+                </p>
+                <div class="service-cta">
+                    <a href="kontakt" class="service-button">Coaching-Paket buchen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Entdecke dein wahres Potenzial</h2>
+            <p class="cta-text">
+                Bereit, dein Human Design zu erforschen und ein Leben in Einklang mit deiner wahren Natur zu führen? Kontaktiere mich für ein individuelles Reading oder eine Beratung.
+            </p>
+            <a href="kontakt" class="cta-button">Jetzt Kontakt aufnehmen</a>
+        </div>
+    </section>
+</div>
+
+@code {
+    // Component code here
+}

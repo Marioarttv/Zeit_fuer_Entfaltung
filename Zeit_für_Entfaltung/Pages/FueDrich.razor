@@ -1,0 +1,366 @@
+﻿@page "/fuer-dich"
+@using Microsoft.AspNetCore.Components.Web
+
+<PageTitle>Für Dich - Zeit für Entfaltung</PageTitle>
+
+<style>
+    /* Für Dich Page Styles */
+    .fuer-dich-page {
+        font-family: 'Montserrat', sans-serif;
+        color: #4e4636;
+    }
+
+    .fuer-dich-hero {
+        position: relative;
+        min-height: 30vh;
+        background-color: #b0b1a8;
+        background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.8), rgba(112, 97, 87, 0.6));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        overflow: hidden;
+        margin-bottom: 3rem;
+    }
+
+        .fuer-dich-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+    .hero-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3.5rem;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .intro-section {
+        padding: 2rem 0 5rem;
+    }
+
+    .intro-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        text-align: center;
+    }
+
+    .intro-image {
+        max-width: 180px;
+        margin: 0 auto 2rem;
+        display: block;
+    }
+
+    .intro-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        margin-bottom: 2rem;
+    }
+
+    .intro-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        color: #706157;
+    }
+
+    .content-cards-section {
+        padding: 3rem 0 5rem;
+        background-color: #f5f4f1;
+    }
+
+    .content-cards-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .content-card {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+    }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(112, 97, 87, 0.15);
+        }
+
+    .content-card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .content-card-body {
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .content-card-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.8rem;
+        color: #4e4636;
+        margin-bottom: 1rem;
+    }
+
+    .content-card-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #706157;
+        margin-bottom: 1.5rem;
+    }
+
+    .coming-soon-badge {
+        display: inline-block;
+        background-color: #b0b1a8;
+        color: white;
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .newsletter-section {
+        padding: 5rem 0;
+        background-image: linear-gradient(135deg, #b0b1a8 0%, #706157 100%);
+        color: white;
+        text-align: center;
+    }
+
+    .newsletter-container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .newsletter-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .newsletter-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+
+    .newsletter-form {
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 10px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        text-align: left;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8);
+        transition: background-color 0.3s ease;
+    }
+
+        .form-control:focus {
+            background-color: #fff;
+            outline: none;
+        }
+
+    .newsletter-button {
+        display: inline-block;
+        background-color: white;
+        color: #706157;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+        .newsletter-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background-color: #f5f4f1;
+        }
+
+    /* Responsive adjustments */
+    @@media (max-width: 992px) {
+        .content-card-body {
+            padding: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.8rem;
+        }
+
+        .intro-title, .content-cards-title, .newsletter-title {
+            font-size: 2.2rem;
+        }
+
+        .newsletter-form {
+            padding: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .hero-title {
+            font-size: 2.3rem;
+        }
+
+        .intro-title, .content-cards-title, .newsletter-title {
+            font-size: 1.8rem;
+        }
+
+        .content-card-title {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<div class="fuer-dich-page">
+    <!-- Hero Section -->
+    <section class="fuer-dich-hero">
+        <h1 class="hero-title">Für Dich</h1>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="intro-container">
+            <img src="images/hand-heart-line.png" alt="Herz in Hand" class="intro-image" onerror="this.src='images/Schildi.png'; this.onerror=null;" />
+            <h2 class="intro-title">Zeit für Dich - Inspiration für Zuhause</h2>
+            <p class="intro-text">
+                Hier findest du eine Auswahl an Ressourcen, die dich in deinem Alltag begleiten und inspirieren können.
+                Von meditativen Reisen bis hin zu kleinen Impulsen für mehr Achtsamkeit und Wohlbefinden – alles ist
+                darauf ausgerichtet, dir Momente der Entfaltung zu schenken, egal wo du gerade bist.
+            </p>
+            <p class="intro-text">
+                <span class="coming-soon-badge">Wird bald aktualisiert</span>
+            </p>
+            <p class="intro-text">
+                Dieser Bereich wird gerade mit Liebe und Sorgfalt für dich vorbereitet. Bald kannst du hier
+                Fantasiereisen, Meditationen, kleine Videos und Podcasts finden, die dich in deinem Zuhause
+                begleiten und unterstützen.
+            </p>
+        </div>
+    </section>
+
+    <!-- Content Cards Section -->
+    <section class="content-cards-section">
+        <div class="container">
+            <h2 class="content-cards-title">Das erwartet dich bald hier</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="content-card">
+                        <img src="images/meditation-placeholder.jpg" alt="Meditationen" class="content-card-image" onerror="this.src='images/Schildi.png'; this.onerror=null;" />
+                        <div class="content-card-body">
+                            <h3 class="content-card-title">Meditationen</h3>
+                            <p class="content-card-text">
+                                Geführte Meditationen für mehr innere Ruhe, Entspannung und Zentrierung im Alltag.
+                            </p>
+                            <span class="coming-soon-badge">Bald verfügbar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="content-card">
+                        <img src="images/fantasy-journey-placeholder.jpg" alt="Fantasiereisen" class="content-card-image" onerror="this.src='images/Schildi.png'; this.onerror=null;" />
+                        <div class="content-card-body">
+                            <h3 class="content-card-title">Fantasiereisen</h3>
+                            <p class="content-card-text">
+                                Begleitete Reisen in deine Vorstellungswelt, um Stress abzubauen und neue Perspektiven zu gewinnen.
+                            </p>
+                            <span class="coming-soon-badge">Bald verfügbar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="content-card">
+                        <img src="images/video-placeholder.jpg" alt="Video Impulse" class="content-card-image" onerror="this.src='images/Schildi.png'; this.onerror=null;" />
+                        <div class="content-card-body">
+                            <h3 class="content-card-title">Video Impulse</h3>
+                            <p class="content-card-text">
+                                Kurze Videos mit praktischen Übungen und Inspirationen für deinen Alltag.
+                            </p>
+                            <span class="coming-soon-badge">Bald verfügbar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="content-card">
+                        <img src="images/podcast-placeholder.jpg" alt="Podcast" class="content-card-image" onerror="this.src='images/Schildi.png'; this.onerror=null;" />
+                        <div class="content-card-body">
+                            <h3 class="content-card-title">Podcast</h3>
+                            <p class="content-card-text">
+                                Hörepisoden zu verschiedenen Themen rund um Persönlichkeitsentwicklung und Wohlbefinden.
+                            </p>
+                            <span class="coming-soon-badge">Bald verfügbar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2 class="newsletter-title">Bleibe informiert</h2>
+            <p class="newsletter-text">
+                Trage dich in meinen Newsletter ein, um als Erste/r zu erfahren, wenn neue Inhalte verfügbar sind.
+                Außerdem erhältst du regelmäßig Inspirationen, praktische Tipps und exklusive Angebote direkt in dein Postfach.
+            </p>
+            <div class="newsletter-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Dein Name">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">E-Mail</label>
+                    <input type="email" id="email" class="form-control" placeholder="Deine E-Mail Adresse">
+                </div>
+                <button type="submit" class="newsletter-button">Jetzt anmelden</button>
+            </div>
+        </div>
+    </section>
+</div>
+
+@code {
+    // Component code here
+}

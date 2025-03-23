@@ -1,0 +1,566 @@
+﻿@page "/aetherische-oele"
+@using Microsoft.AspNetCore.Components.Web
+
+<PageTitle>Ätherische Öle - Zeit für Entfaltung</PageTitle>
+
+<style>
+    /* Ätherische Öle Page Styles */
+    .oils-page {
+        font-family: 'Montserrat', sans-serif;
+        color: #4e4636;
+    }
+
+    .oils-hero {
+        position: relative;
+        min-height: 30vh;
+        background-color: #b0b1a8;
+        background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.8), rgba(112, 97, 87, 0.6));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        overflow: hidden;
+        margin-bottom: 3rem;
+    }
+
+    .oils-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
+        z-index: 1;
+    }
+
+    .hero-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3.5rem;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .intro-section {
+        padding: 4rem 0;
+        background-color: #fff;
+    }
+
+    .intro-container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .intro-image {
+        max-width: 250px;
+        margin-bottom: 2rem;
+        border-radius: 50%;
+        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.15);
+    }
+
+    .intro-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        margin-bottom: 1.5rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .intro-title:after {
+        content: '';
+        position: absolute;
+        width: 60px;
+        height: 3px;
+        background-color: #b0b1a8;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .intro-text {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+
+    .oil-benefits-section {
+        padding: 4rem 0;
+        background-color: #f5f4f1;
+    }
+
+    .benefits-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .benefit-card {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(112, 97, 87, 0.15);
+    }
+
+    .benefit-icon {
+        font-size: 2.5rem;
+        color: #706157;
+        margin-bottom: 1rem;
+    }
+
+    .benefit-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.5rem;
+        color: #4e4636;
+        margin-bottom: 1rem;
+    }
+
+    .benefit-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .services-section {
+        padding: 5rem 0;
+        background-color: #fff;
+    }
+
+    .services-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .services-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .service-item {
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 8px;
+        background-color: #f5f4f1;
+        transition: transform 0.3s ease;
+    }
+
+    .service-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .service-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.8rem;
+        color: #4e4636;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .service-title:after {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 2px;
+        background-color: #b0b1a8;
+        bottom: -5px;
+        left: 0;
+    }
+
+    .service-description {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-details {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+
+    .service-details li {
+        position: relative;
+        padding-left: 28px;
+        margin-bottom: 0.7rem;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .service-details li:before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #b0b1a8;
+        box-shadow: 0 0 0 2px rgba(176, 177, 168, 0.3);
+    }
+
+    .testimonials-section {
+        padding: 5rem 0;
+        background-color: #f5f4f1;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .testimonials-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .testimonial-item {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .testimonial-item:before {
+        content: '"';
+        position: absolute;
+        top: 0;
+        left: 15px;
+        font-size: 5rem;
+        color: rgba(176, 177, 168, 0.2);
+        line-height: 1;
+    }
+
+    .testimonial-text {
+        font-style: italic;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+        font-weight: 600;
+        color: #706157;
+    }
+
+    .cta-section {
+        padding: 5rem 0;
+        background-image: linear-gradient(135deg, #b0b1a8 0%, #706157 100%);
+        color: white;
+        text-align: center;
+    }
+
+    .cta-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .cta-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-text {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background-color: white;
+        color: #706157;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        background-color: #f5f4f1;
+    }
+
+    .oil-gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    .oil-item {
+        background-color: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .oil-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .oil-icon {
+        font-size: 2rem;
+        color: #706157;
+        margin-bottom: 1rem;
+    }
+
+    .oil-name {
+        font-weight: 600;
+        color: #4e4636;
+        margin-bottom: 0.5rem;
+    }
+
+    .oil-property {
+        font-size: 0.9rem;
+        color: #706157;
+    }
+
+    /* Responsive adjustments */
+    @@media (max-width: 992px) {
+        .oil-gallery {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.8rem;
+        }
+
+        .intro-title, .benefits-title, .services-title, .testimonials-title, .cta-title {
+            font-size: 2.2rem;
+        }
+
+        .oil-gallery {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .hero-title {
+            font-size: 2.3rem;
+        }
+
+        .intro-title, .benefits-title, .services-title, .testimonials-title, .cta-title {
+            font-size: 1.8rem;
+        }
+
+        .oil-gallery {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="oils-page">
+    <!-- Hero Section -->
+    <section class="oils-hero">
+        <h1 class="hero-title">Ätherische Öle</h1>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="intro-container">
+                <img src="/images/placeholder-oil.jpg" alt="Ätherische Öle" class="intro-image" onerror="this.src='/images/Schildi.png'; this.style.borderRadius='0';" />
+                <h2 class="intro-title">Deine Aromabegleitung</h2>
+                <p class="intro-text">
+                    Als zertifizierte Aromaberaterin begleite ich dich auf deiner Reise zu mehr Wohlbefinden durch die Kraft der ätherischen Öle. Diese natürlichen Essenzen sind wahre Geschenke der Natur und können uns auf körperlicher, emotionaler und energetischer Ebene unterstützen.
+                </p>
+                <p class="intro-text">
+                    Meine Leidenschaft ist es, Menschen dabei zu helfen, diese kraftvollen Pflanzenessenzen in ihren Alltag zu integrieren und ihr volles Potenzial zu entfalten. Ob zur Entspannung, Energetisierung oder emotionalen Balance – gemeinsam finden wir die perfekten Öle für deine individuellen Bedürfnisse.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="oil-benefits-section">
+        <div class="container">
+            <h2 class="benefits-title">Die Kraft der ätherischen Öle</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="benefit-title">Emotionale Balance</h3>
+                        <p class="benefit-text">
+                            Ätherische Öle können direkt auf unser limbisches System wirken und uns dabei helfen, Emotionen zu verarbeiten, Stress abzubauen und innere Ruhe zu finden.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h3 class="benefit-title">Natürliches Wohlbefinden</h3>
+                        <p class="benefit-text">
+                            Die pflanzlichen Wirkstoffe in ätherischen Ölen können das Immunsystem unterstützen, die Verdauung fördern und bei der Linderung körperlicher Beschwerden helfen.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="benefit-title">Reine Raumluft</h3>
+                        <p class="benefit-text">
+                            Viele ätherische Öle haben reinigende und luftverbessernde Eigenschaften, die dazu beitragen können, ein gesundes und angenehmes Raumklima zu schaffen.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="oil-gallery">
+                <div class="oil-item">
+                    <div class="oil-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4 class="oil-name">Lavendel</h4>
+                    <p class="oil-property">Beruhigend & ausgleichend</p>
+                </div>
+                <div class="oil-item">
+                    <div class="oil-icon">
+                        <i class="fas fa-lemon"></i>
+                    </div>
+                    <h4 class="oil-name">Zitrone</h4>
+                    <p class="oil-property">Energetisierend & reinigend</p>
+                </div>
+                <div class="oil-item">
+                    <div class="oil-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4 class="oil-name">Pfefferminze</h4>
+                    <p class="oil-property">Erfrischend & klärend</p>
+                </div>
+                <div class="oil-item">
+                    <div class="oil-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h4 class="oil-name">Weihrauch</h4>
+                    <p class="oil-property">Erdend & zentrierung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-container">
+                <h2 class="services-title">Meine Angebote</h2>
+
+                <div class="service-item">
+                    <h3 class="service-title">Persönliche Aromaberatung</h3>
+                    <p class="service-description">
+                        In einer individuellen Beratung erfasse ich deine aktuellen Bedürfnisse und Wünsche und stelle dir passende ätherische Öle vor. Gemeinsam entwickeln wir ein Konzept, wie du die Öle optimal in deinen Alltag integrieren kannst.
+                    </p>
+                    <ul class="service-details">
+                        <li>Ausführliches Gespräch über deine Bedürfnisse und Ziele</li>
+                        <li>Individuelle Auswahl passender ätherischer Öle</li>
+                        <li>Praktische Anwendungstipps und Rezepte</li>
+                        <li>Nachbetreuung und Unterstützung bei Fragen</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3 class="service-title">Workshops & Informationsabende</h3>
+                    <p class="service-description">
+                        Erlebe in kleiner Gruppe die Vielfalt ätherischer Öle. Bei meinen Workshops lernst du verschiedene Anwendungsmöglichkeiten kennen und erfährst mehr über die Wirkungsweise und sicheren Umgang mit den Ölen.
+                    </p>
+                    <ul class="service-details">
+                        <li>Einführung in die Welt der ätherischen Öle</li>
+                        <li>Praktische Übungen und DIY-Rezepte</li>
+                        <li>Kleine Gruppen für intensive Erfahrungen</li>
+                        <li>Begleitende Unterlagen zum Mitnehmen</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3 class="service-title">Aromatherapie für Kinder & Familien</h3>
+                    <p class="service-description">
+                        Speziell für Familien biete ich Beratungen an, wie ätherische Öle sicher und effektiv für Kinder eingesetzt werden können. Von sanften Schlafunterstützungen bis hin zu Stimmungsaufhellern für den Familienalltag.
+                    </p>
+                    <ul class="service-details">
+                        <li>Kindgerechte, sichere Anwendungen</li>
+                        <li>Unterstützung bei alltäglichen Herausforderungen</li>
+                        <li>Förderung von Ruhe, Konzentration und Wohlbefinden</li>
+                        <li>Integration in bestehende Familienroutinen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="testimonials-title">Was andere sagen</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="testimonial-item">
+                        <p class="testimonial-text">
+                            "Seit ich mit Jeannette die für mich passenden ätherischen Öle gefunden habe, hat sich mein Schlaf deutlich verbessert. Ihre einfühlsame Art und ihr fundiertes Wissen haben mich beeindruckt. Die persönliche Beratung war genau das, was ich brauchte."
+                        </p>
+                        <p class="testimonial-author">- Sabine K.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="testimonial-item">
+                        <p class="testimonial-text">
+                            "Der Workshop zu ätherischen Ölen für Familien war ein Augenöffner für mich. Mit Jeannettes Tipps haben wir nun natürliche Alternativen für viele Alltagssituationen. Besonders die Mischung für ruhige Abende ist in unserem Haus nicht mehr wegzudenken."
+                        </p>
+                        <p class="testimonial-author">- Thomas M.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-container">
+                <h2 class="cta-title">Beginne deine Aromaerfahrung</h2>
+                <p class="cta-text">
+                    Bist du bereit, die Kraft der ätherischen Öle für dich zu entdecken? Kontaktiere mich für eine persönliche Beratung oder informiere dich über meine nächsten Workshops.
+                </p>
+                <a href="kontakt" class="cta-button">
+                    <i class="fas fa-envelope"></i> Kontakt aufnehmen
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+@code {
+    // Component code here
+}

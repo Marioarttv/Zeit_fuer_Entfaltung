@@ -1,0 +1,481 @@
+﻿@page "/kurse"
+@using Microsoft.AspNetCore.Components.Web
+
+<PageTitle>Coaching und Kurse - Zeit für Entfaltung</PageTitle>
+
+<style>
+    /* Kurse Page Styles */
+    .kurse-page {
+        font-family: 'Montserrat', sans-serif;
+        color: #4e4636;
+    }
+
+    .kurse-hero {
+        position: relative;
+        min-height: 30vh;
+        background-color: #b0b1a8;
+        background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.8), rgba(112, 97, 87, 0.6));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        overflow: hidden;
+        margin-bottom: 3rem;
+    }
+
+    .kurse-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
+        z-index: 1;
+    }
+
+    .hero-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3.5rem;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .kurse-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+        padding: 0 1.5rem;
+    }
+
+    .kurse-intro-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #706157;
+    }
+
+    .coaching-types-section {
+        padding: 2rem 0;
+        background-color: #f5f4f1;
+    }
+
+    .coaching-types-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .coaching-types-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.2rem;
+        color: #4e4636;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .coaching-types-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .coaching-type-item {
+        background-color: #f5f4f1;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+        transition: all 0.3s ease;
+        flex: 1 1 200px;
+        max-width: 250px;
+    }
+
+    .coaching-type-item:hover {
+        background-color: #e5e4e1;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .coaching-type-text {
+        font-weight: 500;
+        color: #706157;
+    }
+
+    .whatsapp-course-section {
+        padding: 5rem 0;
+        background-color: #fff;
+    }
+
+    .course-card {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .course-header {
+        background-color: #706157;
+        padding: 2rem;
+        color: white;
+        text-align: center;
+    }
+
+    .course-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .course-subtitle {
+        font-size: 1.2rem;
+        font-weight: 300;
+        opacity: 0.9;
+    }
+
+    .course-content {
+        padding: 2.5rem;
+    }
+
+    .course-intro {
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .course-features {
+        margin-bottom: 2.5rem;
+    }
+
+    .features-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.6rem;
+        color: #4e4636;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    .features-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background-color: #b0b1a8;
+    }
+
+    .features-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .feature-item {
+        margin-bottom: 1rem;
+        padding-left: 2rem;
+        position: relative;
+    }
+
+    .feature-item:before {
+        content: '✨';
+        position: absolute;
+        left: 0;
+        color: #b0b1a8;
+    }
+
+    .package-section {
+        background-color: #f5f4f1;
+        padding: 2rem;
+        border-radius: 8px;
+        margin-bottom: 2.5rem;
+    }
+
+    .package-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.6rem;
+        color: #4e4636;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .package-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .package-item {
+        margin-bottom: 1rem;
+        padding-left: 2rem;
+        position: relative;
+    }
+
+    .package-item:before {
+        content: '🍃';
+        position: absolute;
+        left: 0;
+    }
+
+    .package-item:nth-child(2):before {
+        content: '☕';
+    }
+
+    .package-item:nth-child(3):before {
+        content: '🥣';
+    }
+
+    .goals-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .goals-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.6rem;
+        color: #4e4636;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    .goals-title:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 2px;
+        background-color: #b0b1a8;
+    }
+
+    .goals-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .goal-item {
+        margin-bottom: 1rem;
+        padding-left: 2rem;
+        position: relative;
+    }
+
+    .goal-item:before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        font-size: 1.2rem;
+        color: #b0b1a8;
+    }
+
+    .course-details {
+        border-top: 1px solid #e5e4e1;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .detail-item {
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .detail-item span {
+        font-weight: 700;
+        color: #706157;
+    }
+
+    .course-cta {
+        text-align: center;
+        margin-top: 2.5rem;
+    }
+
+    .cta-text {
+        font-size: 1.2rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        font-style: italic;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background-color: #25D366;
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        background-color: #20BD5C;
+    }
+
+    .cta-button i {
+        margin-right: 0.5rem;
+    }
+
+    /* Responsive adjustments */
+    @@media (max-width: 992px) {
+        .course-content {
+            padding: 2rem;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.8rem;
+        }
+
+        .coaching-types-title, .course-title {
+            font-size: 2rem;
+        }
+
+        .coaching-type-item {
+            flex: 1 1 150px;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 576px) {
+        .hero-title {
+            font-size: 2.3rem;
+        }
+
+        .coaching-types-title, .course-title {
+            font-size: 1.8rem;
+        }
+
+        .course-subtitle {
+            font-size: 1.1rem;
+        }
+
+        .package-section {
+            padding: 1.5rem;
+        }
+
+        .features-title, .package-title, .goals-title {
+            font-size: 1.4rem;
+        }
+    }
+</style>
+
+<div class="kurse-page">
+    <!-- Hero Section -->
+    <section class="kurse-hero">
+        <h1 class="hero-title">Coaching und Kurse</h1>
+    </section>
+
+    <div class="kurse-intro">
+        <p class="kurse-intro-text">
+            Mein umfassendes Coaching- und Kursangebot ist darauf ausgerichtet, dich und deine Familie ganzheitlich zu begleiten und zu unterstützen. Entdecke die verschiedenen Möglichkeiten, wie wir gemeinsam an deinen Zielen arbeiten können.
+        </p>
+    </div>
+
+    <!-- Coaching Types Section -->
+    <section class="coaching-types-section">
+        <div class="container">
+            <div class="coaching-types-container">
+                <h2 class="coaching-types-title">Meine Coaching-Angebote</h2>
+                <ul class="coaching-types-list">
+                    <li class="coaching-type-item">
+                        <p class="coaching-type-text">Coaching für Kinder / Jugendliche & Familien</p>
+                    </li>
+                    <li class="coaching-type-item">
+                        <p class="coaching-type-text">Lerncoaching / Lerntherapie</p>
+                    </li>
+                    <li class="coaching-type-item">
+                        <p class="coaching-type-text">LRS Förderung</p>
+                    </li>
+                    <li class="coaching-type-item">
+                        <p class="coaching-type-text">Whatsapp Kurse</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Course Section -->
+    <section class="whatsapp-course-section">
+        <div class="container">
+            <div class="course-card">
+                <div class="course-header">
+                    <h2 class="course-title">Frisch und positiv ausgerichtet in 2025</h2>
+                    <p class="course-subtitle">Starte 2025 voller Energie und Positivität – Dein 10-tägiger WhatsApp-Kurs im Januar</p>
+                </div>
+                <div class="course-content">
+                    <p class="course-intro">
+                        Im Januar bieten wir, Jeannette und Nadine @@nadines_trauminsel einen besonderen 10-tägigen WhatsApp-Kurs an, der dich unterstützt, kraftvoll und positiv ins neue Jahr zu starten. Dieser Kurs ist für alle, die sich bewusst Zeit für sich nehmen möchten, um Altes loszulassen, sich neu auszurichten und Körper sowie Geist zu stärken.
+                    </p>
+
+                    <div class="course-features">
+                        <h3 class="features-title">Das erwartet dich im Kurs:</h3>
+                        <ul class="features-list">
+                            <li class="feature-item">Meditationen – für Klarheit und eine positive Einstellung.</li>
+                            <li class="feature-item">Körperübungen – um Spannungen zu lösen und Energie zu wecken.</li>
+                            <li class="feature-item">Journaling – mit Impulsen für Reflexion und Neuausrichtung.</li>
+                            <li class="feature-item">Übungen zur emotionalen Unterstützung – für Balance und innere Stärke.</li>
+                            <li class="feature-item">Wissen zur Darmgesundheit und Ernährung – für mehr Wohlbefinden nach der Erkältungszeit.</li>
+                        </ul>
+                    </div>
+
+                    <div class="package-section">
+                        <h3 class="package-title">Inklusive persönlichem Paket</h3>
+                        <p>Um deinen Kurs zu ergänzen, erhältst du ein liebevoll zusammengestelltes Paket nach Hause mit:</p>
+                        <ul class="package-list">
+                            <li class="package-item">PB Restore von dōTERRA – für die Stärkung deines Darms.</li>
+                            <li class="package-item">Energietee – der dich von innen wärmt und aktiviert.</li>
+                            <li class="package-item">Granola – für einen gesunden Start in den Tag.</li>
+                        </ul>
+                    </div>
+
+                    <div class="goals-section">
+                        <h3 class="goals-title">Ziel des Kurses:</h3>
+                        <ul class="goals-list">
+                            <li class="goal-item">Altes, das dir nicht mehr dient, bewusst im alten Jahr lassen.</li>
+                            <li class="goal-item">Deinen Darm und Körper nach der stressigen und kalten Jahreszeit stärken.</li>
+                            <li class="goal-item">Dich in einer positiven Gemeinschaft auf das neue Jahr ausrichten.</li>
+                            <li class="goal-item">Motivation und Inspiration für einen erfolgreichen Start ins Jahr 2025 finden.</li>
+                        </ul>
+                        <p>Dieser Kurs gibt dir die Werkzeuge, um das neue Jahr mit Energie, Freude und einem gestärkten Körper zu begrüßen.</p>
+                    </div>
+
+                    <div class="course-details">
+                        <p class="detail-item">Beginn: <span>20. Januar 2025</span></p>
+                        <p class="detail-item">Anmeldeschluss: <span>13.01.2025</span></p>
+                        <p class="detail-item">Dauer: <span>10 Tage über WhatsApp</span></p>
+                        <p class="detail-item">Deine Investition in Dich: <span>88€</span></p>
+                    </div>
+
+                    <div class="course-cta">
+                        <p class="cta-text">Schaffe dir einen positiven Start ins neue Jahr – für dich und dein Wohlbefinden!</p>
+                        <p>Melde dich bei uns und buche direkt deinen Platz in unserer Gruppe ❤️🙏🏻</p>
+                        <a href="https://wa.me/4960319648368?text=Hallo,%20ich%20interessiere%20mich%20für%20den%20WhatsApp-Kurs%20'Frisch%20und%20positiv%20ausgerichtet%20in%202025'%20und%20möchte%20gerne%20einen%20Platz%20buchen." class="cta-button">
+                            <i class="fab fa-whatsapp"></i> Per WhatsApp anmelden
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@code {
+    // Component code here
+}
