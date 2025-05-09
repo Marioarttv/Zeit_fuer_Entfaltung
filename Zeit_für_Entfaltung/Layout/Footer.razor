@@ -1,0 +1,106 @@
+﻿@using System
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 footer-contact">
+                <h4>Zeit für Entfaltung</h4>
+                <p><strong>Jeannette Fröhlich</strong></p>
+                <p>jeannette.froehlich@yahoo.de</p>
+                <p>Whatsapp: 06031-9648368</p>
+            </div>
+            <div class="col-md-6 text-md-end d-flex align-items-center justify-content-md-end justify-content-center">
+                <div class="social-links">
+                    <a href="https://www.instagram.com/zeit_fuer_entfaltung/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom mt-4">
+            <a href="impressum">Impressum</a>
+            <a href="datenschutz" class="ms-3">Datenschutz</a>
+            <p>&copy; @DateTime.Now.Year - Zeit für Entfaltung</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        background-color: #f5f4f1;
+        padding: 3rem 0 1.5rem;
+        margin-top: 2rem;
+        color: var(--taupe-color);
+    }
+
+        .footer h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--corduroy-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+    .social-links {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--bud-color);
+            color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+            .social-links a:hover {
+                background-color: var(--corduroy-color);
+                transform: translateY(-3px);
+            }
+
+        .social-links i {
+            font-size: 1.2rem;
+        }
+
+    .footer-bottom {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(112, 97, 87, 0.1);
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+        .footer-bottom a {
+            color: var(--taupe-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            .footer-bottom a:hover {
+                color: var(--corduroy-color);
+            }
+
+        .footer-bottom p {
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+    @@media (max-width: 767px) {
+        .footer-contact {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+    }
+</style>
+
+@code {
+    // No code needed for this component unless you want to add logic
+}

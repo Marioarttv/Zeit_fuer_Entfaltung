@@ -1,0 +1,165 @@
+﻿<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="/schilli">
+            <img src="images/Schildi.jpg" alt="Schildi Logo" class="navbar-logo" />
+            <span class="brand-text">Zeit für Entfaltung</span>
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="nav-text">Willkommen</span>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="ueber-mich">
+                        <span class="nav-text">Über Mich</span>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="schilli-konzept">
+                        <span class="nav-text">Schilli</span>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="humandesign">
+                        <span class="nav-text">Humandesign</span>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="aetherische-oele">
+                        <span class="nav-text">Ätherische Öle</span>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="kontakt">
+                        <span class="nav-text">Kontakt</span>
+                    </NavLink>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+    /* Navbar Styles */
+    .navbar {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(112, 97, 87, 0.08);
+        padding: 0.8rem 0;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-logo {
+        height: 45px;
+        margin-right: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .brand-text {
+        font-family: 'Cormorant Garamond', serif;
+        color: var(--taupe-color);
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-left: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-nav {
+        margin-left: auto;
+    }
+
+    .nav-link {
+        color: var(--taupe-color);
+        margin: 0 10px;
+        padding: 8px 5px;
+        position: relative;
+        font-weight: 400;
+        transition: all 0.3s ease;
+    }
+
+    .nav-text {
+        position: relative;
+        z-index: 1;
+    }
+
+    .nav-link.active {
+        color: var(--corduroy-color);
+        font-weight: 500;
+    }
+
+    .nav-link:before {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--bud-color);
+        transition: width 0.3s ease;
+        z-index: 0;
+    }
+
+    .nav-link:hover {
+        color: var(--corduroy-color);
+    }
+
+        .nav-link:hover:before,
+        .nav-link.active:before {
+            width: 100%;
+        }
+
+    .navbar-toggler {
+        border: none;
+        padding: 0.5rem;
+    }
+
+    .custom-toggler .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(90, 94, 92, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar-toggler:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    @@media (max-width: 991.98px) {
+        .navbar-collapse {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 0.5rem;
+        }
+
+        .nav-link {
+            padding: 0.8rem 1rem;
+            margin: 0;
+            border-radius: 5px;
+        }
+
+            .nav-link:hover,
+            .nav-link.active {
+                background-color: rgba(176, 177, 168, 0.1);
+            }
+
+            .nav-link:before {
+                display: none;
+            }
+    }
+
+    /* CSS variables if not defined elsewhere */
+    :root {
+        --taupe-color: #706157;
+        --corduroy-color: #5a5e5c;
+        --bud-color: #b0b1a8;
+    }
+</style>
+
+@code {
+    // No code needed for this component unless you want to add logic
+}

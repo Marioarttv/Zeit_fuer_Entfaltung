@@ -1,0 +1,161 @@
+﻿@page "/impressum"
+
+<PageTitle>Impressum - Zeit für Entfaltung</PageTitle>
+
+<style>
+    .legal-page {
+        font-family: 'Montserrat', sans-serif;
+        color: #4e4636;
+        padding-bottom: 4rem;
+    }
+
+    .legal-hero {
+        position: relative;
+        min-height: 30vh;
+        background-color: #b0b1a8;
+        background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.8), rgba(112, 97, 87, 0.6));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        overflow: hidden;
+        margin-bottom: 3rem;
+    }
+
+        .legal-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+    .hero-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3.5rem;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .legal-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .legal-section {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(112, 97, 87, 0.08);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+        .legal-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #5a5e5c;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(176, 177, 168, 0.3);
+        }
+
+        .legal-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #706157;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+    .contact-info p {
+        margin-bottom: 0.5rem;
+    }
+
+    @@media (max-width: 768px) {
+        .hero-title
+
+    {
+        font-size: 2.8rem;
+    }
+
+    .legal-section {
+        padding: 1.5rem;
+    }
+
+    }
+
+    @@media (max-width: 576px) {
+        .hero-title
+
+    {
+        font-size: 2.3rem;
+    }
+
+    }
+</style>
+
+<div class="legal-page">
+    <!-- Hero Section -->
+    <section class="legal-hero">
+        <h1 class="hero-title">Impressum</h1>
+    </section>
+
+    <div class="legal-content">
+        <section class="legal-section">
+            <h2>Angaben gemäß § 5 TMG</h2>
+            <div class="contact-info">
+                <p><strong>Zeit für Entfaltung</strong></p>
+                <p>Jeannette Fröhlich</p>
+                <p>Friedensstraße 16</p>
+                <p>61169 Friedberg</p>
+                <p>E-Mail: jeannette.froehlich@yahoo.de</p>
+                <p>Berufsbezeichnung: Entspannungstrainerin, Yogalehrerin, Kinderstärkerin</p>
+                <p>Steuernummer: 01642137762</p>
+                <p>Berufsbezeichnung verliehen im Land: Deutschland</p>
+                <p>Geltungsbereich: Deutschland</p>
+            </div>
+        </section>
+
+        <section class="legal-section">
+            <h2>Bildrechte</h2>
+            <p>Ionos</p>
+            <p>Canva</p>
+            <p>Pixabay</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Urheberrecht</h2>
+            <p>Alle Texte dieser Homepage sind Eigentum von Jeannette Fröhlich und dürfen von Dritten nicht verwendet oder vervielfältig werden. Unerlaubtes Kopieren und Vervielfältigen hat rechtliche Konsequenzen.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Hinweis gemäß Online-Streitbeilegungs-Verordnung</h2>
+            <p>Nach geltendem Recht sind wir verpflichtet, Verbraucher auf die Existenz der Europäischen Online-Streitbeilegungs-Plattform hinzuweisen, die für die Beilegung von Streitigkeiten genutzt werden kann, ohne dass ein Gericht eingeschaltet werden muss. Für die Einrichtung der Plattform ist die Europäische Kommission zuständig. Die Europäische Online-Streitbeilegungs-Plattform ist hier zu finden: <a href="http://ec.europa.eu/odr" target="_blank">http://ec.europa.eu/odr</a>. Unsere E-Mail lautet: jeannette.froehlich@yahoo.de</p>
+            <p>Wir weisen aber darauf hin, dass wir nicht bereit sind, uns am Streitbeilegungsverfahren im Rahmen der Europäischen Online-Streitbeilegungs-Plattform zu beteiligen. Nutzen Sie zur Kontaktaufnahme bitte unsere obige E-Mail und Telefonnummer.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Disclaimer – rechtliche Hinweise</h2>
+
+            <h3>§ 1 Warnhinweis zu Inhalten</h3>
+            <p>Die kostenlosen und frei zugänglichen Inhalte dieser Webseite wurden mit größtmöglicher Sorgfalt erstellt. Der Anbieter dieser Webseite übernimmt jedoch keine Gewähr für die Richtigkeit und Aktualität der bereitgestellten kostenlosen und frei zugänglichen journalistischen Ratgeber und Nachrichten. Namentlich gekennzeichnete Beiträge geben die Meinung des jeweiligen Autors und nicht immer die Meinung des Anbieters wieder. Allein durch den Aufruf der kostenlosen und frei zugänglichen Inhalte kommt keinerlei Vertragsverhältnis zwischen dem Nutzer und dem Anbieter zustande, insoweit fehlt es am Rechtsbindungswillen des Anbieters.</p>
+
+            <h3>§ 2 Externe Links</h3>
+            <p>Diese Website enthält Verknüpfungen zu Websites Dritter ("externe Links"). Diese Websites unterliegen der Haftung der jeweiligen Betreiber. Der Anbieter hat bei der erstmaligen Verknüpfung der externen Links die fremden Inhalte daraufhin überprüft, ob etwaige Rechtsverstöße bestehen. Zu dem Zeitpunkt waren keine Rechtsverstöße ersichtlich. Der Anbieter hat keinerlei Einfluss auf die aktuelle und zukünftige Gestaltung und auf die Inhalte der verknüpften Seiten. Das Setzen von externen Links bedeutet nicht, dass sich der Anbieter die hinter dem Verweis oder Link liegenden Inhalte zu Eigen macht. Eine ständige Kontrolle der externen Links ist für den Anbieter ohne konkrete Hinweise auf Rechtsverstöße nicht zumutbar. Bei Kenntnis von Rechtsverstößen werden jedoch derartige externe Links unverzüglich gelöscht.</p>
+
+            <h3>§ 3 Urheber- und Leistungsschutzrechte</h3>
+            <p>Die auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheber- und Leistungsschutzrecht. Jede vom deutschen Urheber- und Leistungsschutzrecht nicht zugelassene Verwertung bedarf der vorherigen schriftlichen Zustimmung des Anbieters oder jeweiligen Rechteinhabers. Dies gilt insbesondere für Vervielfältigung, Bearbeitung, Übersetzung, Einspeicherung, Verarbeitung bzw. Wiedergabe von Inhalten in Datenbanken oder anderen elektronischen Medien und Systemen. Inhalte und Rechte Dritter sind dabei als solche gekennzeichnet. Die unerlaubte Vervielfältigung oder Weitergabe einzelner Inhalte oder kompletter Seiten ist nicht gestattet und strafbar. Lediglich die Herstellung von Kopien und Downloads für den persönlichen, privaten und nicht kommerziellen Gebrauch ist erlaubt.</p>
+            <p>Die Darstellung dieser Website in fremden Frames ist nur mit schriftlicher Erlaubnis zulässig.</p>
+
+            <h3>§ 4 Besondere Nutzungsbedingungen</h3>
+            <p>Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen.</p>
+        </section>
+    </div>
+</div>
+

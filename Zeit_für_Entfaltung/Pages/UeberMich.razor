@@ -6,28 +6,6 @@
 <style>
     /* About Me Page Styles - Component Scoped */
 
-    .quote-section {
-        padding: 5rem 0;
-        background-color: rgba(176, 177, 168, 0.1);
-        position: relative;
-    }
-
-    .quote-container {
-        text-align: center;
-        position: relative;
-        z-index: 2;
-        max-width: 1000px;
-        margin: 0 auto;
-        animation: fadeIn 1.5s ease;
-    }
-
-    .quote-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    }
-
     .about-me-hero {
         position: relative;
         min-height: 30vh;
@@ -165,13 +143,17 @@
         margin-bottom: 2rem;
         position: relative;
         z-index: 1;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
         .qualifications-list li {
             position: relative;
             padding-left: 28px;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.15rem;
+            text-align: left;
         }
 
             .qualifications-list li:before {
@@ -186,38 +168,92 @@
                 box-shadow: 0 0 0 2px rgba(176, 177, 168, 0.3);
             }
 
+    .contact-section {
+        padding: 5rem 0;
+        background-color: #fff;
+        text-align: center;
+    }
+
+    .contact-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 2.5rem;
+        color: #4e4636;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+
+        .contact-title:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #b0b1a8;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+    .contact-list {
+        list-style: none;
+        padding-left: 0;
+        margin: 3rem auto;
+        position: relative;
+        max-width: 600px;
+    }
+
+        .contact-list li {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .contact-list li a {
+                color: #4e4636;
+                text-decoration: none;
+                transition: color 0.3s ease;
+                display: flex;
+                align-items: center;
+            }
+
+                .contact-list li a:hover {
+                    color: #b0b1a8;
+                }
+
+            .contact-list li i {
+                margin-right: 10px;
+                font-size: 1.5rem;
+                color: #b0b1a8;
+            }
+
     @@keyframes fadeIn {
-        from
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
 
-    {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     /* Responsive adjustments */
     @@media (max-width: 992px) {
-        .about-me-hero
+        .about-me-hero {
+            min-height: auto;
+            padding: 3rem 1rem;
+        }
 
-    {
-        min-height: auto;
-        padding: 3rem 1rem;
-    }
+        .about-me-title {
+            font-size: 2.4rem;
+        }
 
-    .about-me-title {
-        font-size: 2.4rem;
-    }
-
-    .about-me-content {
-        padding: 1rem 0;
-    }
-
+        .about-me-content {
+            padding: 1rem 0;
+        }
     }
 
     .hero-title {
@@ -232,52 +268,46 @@
     }
 
     @@media (max-width: 768px) {
-        .hero-title
+        .hero-title {
+            font-size: 2.8rem;
+        }
 
-    {
-        font-size: 2.8rem;
-    }
+        .qualifications-list li {
+            font-size: 1.1rem;
+        }
 
-    .qualifications-list li {
-        font-size: 1rem;
-    }
+        .about-me-name {
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    .about-me-name {
-        left: 50%;
-        transform: translateX(-50%);
-    }
+        .about-me-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    .about-me-title:after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .about-me-title {
-        display: block;
-        text-align: center;
-    }
-
+        .about-me-title {
+            display: block;
+            text-align: center;
+        }
     }
 
     @@media (max-width: 576px) {
-        .quote-image
+        .about-me-name h2 {
+            font-size: 1.5rem;
+        }
 
-    {
-        max-width: 100%;
-    }
+        .about-me-title {
+            font-size: 2rem;
+        }
 
-    .about-me-name h2 {
-        font-size: 1.5rem;
-    }
+        .qualifications-title {
+            font-size: 2rem;
+        }
 
-    .about-me-title {
-        font-size: 2rem;
-    }
-
-    .qualifications-title {
-        font-size: 2rem;
-    }
-
+        .contact-title {
+            font-size: 2rem;
+        }
     }
 </style>
 
@@ -288,7 +318,7 @@
 
 <section class="about-me-section">
     <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-lg-5 mb-4 mb-lg-0">
                 <div class="about-me-image-container">
                     <img src="images/AboutMePicture.jpg" alt="Jeannette Fröhlich" class="about-me-image" />
@@ -316,39 +346,41 @@
     <div class="container">
         <h2 class="qualifications-title">Meine Ausbildungen</h2>
         <div class="qualifications-divider"></div>
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
                 <ul class="qualifications-list">
                     <li>Erzieherin in der Anerkennung</li>
                     <li>Human Design Coach</li>
-                    <li>Zertifizierte Aromaberaterin</li>
+                    <li>zertifizierte Aromaberaterin</li>
                     <li>Ganzheitlicher Kinder, Jugend &amp; Familiencoach</li>
                     <li>Kinderstärkerin</li>
                     <li>Lerntherapeutin</li>
-                    <li>Lerncoach &amp; LRS Trainerin</li>
-                    <li>Kursleitung bewegte Traumapädagogik i.A.</li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <ul class="qualifications-list">
-                    <li>Mobbingpräventionstrainerin</li>
-                    <li>Integrative Klangpädagogin</li>
-                    <li>Kursleitung für kreativen Kindertanz</li>
-                    <li>Entspannungspädagogin</li>
-                    <li>Achtsamkeitstrainerin</li>
-                    <li>Yin Yogalehrerin</li>
-                    <li>Yoga Nidralehrerin</li>
-                    <li>Yogalehrerin 500 Std</li>
+                    <li>Yogalehrerin</li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
-<section class="quote-section">
+<section class="contact-section">
     <div class="container">
-        <div class="quote-container">
-            <img src="images/WebsiteTextAboutMe.webp" alt="Zitat über Kinder" class="quote-image" />
+        <h2 class="contact-title">Kontakt</h2>
+        <div class="qualifications-divider"></div>
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <ul class="contact-list">
+                    <li>
+                        <a href="https://www.instagram.com/zeit_fuer_entfaltung/" target="_blank">
+                            <i class="fab fa-instagram"></i>@@zeit_fuer_entfaltung
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/zeit_fuer_oeleliebe/" target="_blank">
+                            <i class="fab fa-instagram"></i>@@zeit_fuer_oeleliebe
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>

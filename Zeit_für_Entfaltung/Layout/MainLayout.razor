@@ -1,89 +1,10 @@
-﻿@inherits LayoutComponentBase
+﻿@using Zeit_für_Entfaltung
+@inherits LayoutComponentBase
 
 <div class="page">
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="">
-                <img src="images/Schildi.png" alt="Schildi Logo" class="navbar-logo" />
-                <span class="brand-text">Zeit für Entfaltung</span>
-            </a>
-            <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                            <span class="nav-text">Willkommen</span>
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="ueber-mich">
-                            <span class="nav-text">Über Mich</span>
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="schilli-konzept">
-                            <span class="nav-text">Schilli</span>
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="humandesign">
-                            <span class="nav-text">Humandesign</span>
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="aetherische-oele">
-                            <span class="nav-text">Ätherische Öle</span>
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="angebot">
-                            <span class="nav-text">Angebote</span>
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="kontakt">
-                            <span class="nav-text">Kontakt</span>
-                        </NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="mitgliederbereich">
-                            <span class="nav-text">Mitgliederbereich</span>
-                        </NavLink>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main>
+    <Navbar />
+    <main style="overflow: visible !important;">
         @Body
     </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 footer-contact">
-                    <h4>Zeit für Entfaltung</h4>
-                    <p><strong>Jeannette Fröhlich</strong></p>
-                    <p>jeannette.froehlich@yahoo.de</p>
-                    <p>Whatsapp: 06031-9648368</p>
-                </div>
-                <div class="col-md-6 text-md-end d-flex align-items-center justify-content-md-end justify-content-center">
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/zeit_fuer_entfaltung/" target="_blank" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom mt-4">
-                <a href="impressum">Impressum</a>
-                <a href="datenschutz" class="ms-3">Datenschutz</a>
-                <p>&copy; @DateTime.Now.Year - Zeit für Entfaltung</p>
-            </div>
-        </div>
-    </footer>
+    <Footer />
 </div>

@@ -1,0 +1,198 @@
+﻿@page "/datenschutz"
+
+<PageTitle>Datenschutz - Zeit für Entfaltung</PageTitle>
+
+<style>
+    .legal-page {
+        font-family: 'Montserrat', sans-serif;
+        color: #4e4636;
+        padding-bottom: 4rem;
+    }
+
+    .legal-hero {
+        position: relative;
+        min-height: 30vh;
+        background-color: #b0b1a8;
+        background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.8), rgba(112, 97, 87, 0.6));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4rem 2rem;
+        overflow: hidden;
+        margin-bottom: 3rem;
+    }
+
+        .legal-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+    .hero-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 3.5rem;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .legal-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    .legal-section {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(112, 97, 87, 0.08);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+        .legal-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #5a5e5c;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(176, 177, 168, 0.3);
+        }
+
+        .legal-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: #706157;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .legal-section a {
+            color: #706157;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+            .legal-section a:hover {
+                color: #5a5e5c;
+            }
+
+    @@media (max-width: 768px) {
+        .hero-title
+
+    {
+        font-size: 2.8rem;
+    }
+
+    .legal-section {
+        padding: 1.5rem;
+    }
+
+    }
+
+    @@media (max-width: 576px) {
+        .hero-title
+
+    {
+        font-size: 2.3rem;
+    }
+
+    }
+</style>
+
+<div class="legal-page">
+    <!-- Hero Section -->
+    <section class="legal-hero">
+        <h1 class="hero-title">Datenschutz</h1>
+    </section>
+
+    <div class="legal-content">
+        <section class="legal-section">
+            <h2>Datenschutzerklärung</h2>
+            <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. In dieser Datenschutzerklärung informieren wir Sie über die wichtigsten Aspekte der Datenverarbeitung im Rahmen unserer Website.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Kontaktformular</h2>
+            <p>Wenn Sie per Formular auf der Website oder per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen sechs Monate bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Analysezwecke</h2>
+            <p>Darüber hinaus werden Daten zu Analysezwecken erhoben und verwendet. Diese Datenverarbeitung erfolgt nicht personenbezogen (siehe hierzu nachstehend Informationen zu Cookies).</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Registrierung</h2>
+            <p>Bei einer Registrierung wird die E-Mail-Adresse des Nutzers sowie ein Passwort gespeichert. Sofern in der Folge ein Kauf erfolgt, wird die E-Mail-Adresse mit den beim Kaufvorgang ermittelten Daten verknüpft. Die von Ihnen bereitgestellten Daten sind zur Einrichtung des Nutzeraccounts erforderlich. Die Datenverarbeitung erfolgt für die Dauer des Bestehens des Nutzeraccounts. Bei Löschung des Nutzeraccounts erfolgt eine Löschung der E-Mail-Adresse und des Passworts sowie der Verknüpfung zur Daten des Kaufvorganges.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>IT-Sicherheit</h2>
+            <p>Beim Besuch dieser Website werden darüber hinaus Logfiles gespeichert, welche die IP-Adresse und sonstige Daten zum Zugriff auf die Website enthalten (z. B. Datum, Uhrzeit, UserAgent, Referer). Die Datenverarbeitung erfolgt zeitlich befristet (maximal 30 Tage) und nur zur Absicherung vor DDOS Attacken oder sonstigen Eingriffen in die Funktionalität der Website sowie der allenfalls dahinterliegenden Datenbanksysteme.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Informationen zu Cookies</h2>
+            <p>Diese Website verwendet so genannte Cookies. Dabei handelt es sich um kleine Textdateien, die mit Hilfe des Browsers auf Ihrem Endgerät abgelegt werden. Sie richten keinen Schaden an.</p>
+            <p>Auf dieser Seite werden sogenannte Session Cookies verwendet. Diese werden beim Aufruf der Website generiert und automatisch wieder gelöscht. Sie dienen der Wiedererkennung, wenn Sie innerhalb kurzer Zeit dieselbe Website erneut aufrufen, um bereits getätigte Voreinstellungen erneut zu berücksichtigen. Es werden dabei keinerlei personenbezogene Daten gespeichert oder verarbeitet.</p>
+            <p>Cookies haben den Zweck, das Website-Angebot nutzerfreundlich zu gestalten. Einige Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Sie ermöglichen es sohin dem Websitebetreiber, Ihren Browser beim nächsten Besuch wiederzuerkennen. Wenn Sie dies nicht wünschen, so können Sie Ihren Browser so einrichten, dass er Sie über das Setzen von Cookies informiert und Sie dies nur im Einzelfall erlauben. Bei der Deaktivierung von Cookies kann die Funktionalität der Website jedoch eingeschränkt sein.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Webanalysedienst Google (Google Analytics)</h2>
+            <p>Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. Anbieter ist Google Inc., 1600 Amphitheatre Parkway Mountain View, CA 94043, USA. Wir nutzen die Funktion "Aktivierung der IP-Anonymisierung" auf dieser Website. Dadurch wird Ihre IP-Adresse von Google innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum vor der Verarbeitung/Speicherung gekürzt. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten zusammenzustellen, um die Kampagnenleistung von Onlinewerbung für Analyse- und Optimierungszwecke zu messen.</p>
+            <p>Zu den verarbeiteten Daten zählen insbesondere Online-Kennzeichnungen (einschließlich Cookie-Kennungen), Internet-Protokoll-Adressen, Gerätekennungen, Standortdaten, vom Kunden vergebene Kennzeichnungen sowie Nutzerdaten (insbesondere Zeitpunkt und Dauer des Zugriffs, Auswahl bestimmter Angebote, etc.). Mehr Informationen zum Umgang mit Nutzerdaten bei Google Analytics finden Sie in der Datenschutzerklärung von Google, abrufbar unter <a href="https://policies.google.com/privacy?hl=de" target="_blank">https://policies.google.com/privacy?hl=de</a>.</p>
+            <p>Sie können die Erfassung der durch das Cookie erzeugten und auf Ihre Nutzung der Website bezogenen Daten an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem Sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren: <a href="https://tools.google.com/dlpage/gaoptout?hl=de" target="_blank">https://tools.google.com/dlpage/gaoptout?hl=de</a></p>
+            <p>Die Beziehung zum Webanalyseanbieter basiert beim Einsatz von Google Analytics auf einer Auftragsdatenverarbeitung. Die Übermittlung von Daten an den Auftragsverarbeiter basiert auf einem Angemessenheitsbeschluss der Europäischen Kommission (Selbstzertifizierung Privacy Shield). Die Daten werden regelmäßig (derzeit alle 26 Monate) gelöscht.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Verwendung von Google Adwords Conversion-Tracking</h2>
+            <p>Diese Website nutzt das Online-Werbeprogramm „Google AdWords" und im Rahmen von Google AdWords das Conversion-Tracking. Das Google Conversion Tracking ist ein Analysedienst der Google Inc. (1600 Amphitheatre Parkway, Mountain View, CA 94043, USA; „Google"). Wenn Sie auf eine von Google geschaltete Anzeige klicken, wird ein Cookie für das Conversion-Tracking auf Ihrem Rechner abgelegt. Diese Cookies verlieren nach maximal 90 Tagen ihre Gültigkeit. Wenn Sie bestimmte Internetseiten unserer Website besuchen und das Cookie noch nicht abgelaufen ist, kann Google und der Websitebetreiber erkennen, dass Sie auf die Anzeige geklickt haben und zu dieser Seite weitergeleitet wurden.</p>
+            <p>Die Informationen, die mithilfe des Conversion-Cookies eingeholten werden, dienen dazu, Conversion-Statistiken zu erstellen. Hierbei erfährt der Websitebetreiber die Gesamtanzahl der Nutzer, die auf eine Anzeige geklickt haben und zu einer mit einem Conversion-Tracking-Tag versehenen Seite weitergeleitet wurden und/oder verschiedene Handlungen auf der Seite ausgeführt haben. Der Website-Betreiber erhält jedoch keine Informationen, mit denen sich Nutzer persönlich identifizieren lassen.</p>
+            <p>Wenn Sie nicht am Tracking teilnehmen möchten, können Sie dieser Nutzung widersprechen, indem Sie die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern (Deaktivierungsmöglichkeit). Sie werden sodann nicht in die Conversion-Tracking Statistiken aufgenommen. Weiterführende Informationen sowie die Datenschutzerklärung von Google finden Sie unter: <a href="http://www.google.com/policies/technologies/ads/" target="_blank">http://www.google.com/policies/technologies/ads/</a>, <a href="http://www.google.de/policies/privacy/" target="_blank">http://www.google.de/policies/privacy/</a></p>
+            <p>Die Beziehung zum Webanalyseanbieter basiert beim Einsatz des Google Adwords Conversion-Tracking auf einer Auftragsdatenverarbeitung. Die Übermittlung von Daten an den Auftragsverarbeiter basiert auf einem Angemessenheitsbeschluss er Europäischen Kommission (Selbstzertifizierung Privacy Shield). Google ist zudem verpflichtet, die Daten regelmäßig (derzeit alle 39 Monate) zu löschen.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Verwendung von Google reCAPTCHA</h2>
+            <p>Wir verwenden den Google-Dienst reCaptcha, um festzustellen, ob ein Mensch oder ein Computer eine bestimmte Eingabe in unserem Kontakt- oder Newsletter-Formular macht. Google prüft anhand folgender Daten, ob Sie ein Mensch oder ein Computer sind: IP-Adresse des verwendeten Endgeräts, die Webseite, die Sie bei uns besuchen und auf der das Captcha eingebunden ist, das Datum und die Dauer des Besuchs, die Erkennungsdaten des verwendeten Browser- und Betriebssystem-Typs, Google-Account, wenn Sie bei Google eingeloggt sind, Mausbewegungen auf den reCaptcha-Flächen sowie Aufgaben, bei denen Sie Bilder identifizieren müssen. Rechtsgrundlage für die beschriebene Datenverarbeitung ist Art. 6 Abs. 1 lit. f Datenschutz-Grundverordnung. Es besteht ein berechtigtes Interesse auf unserer Seite an dieser Datenverarbeitung, die Sicherheit unserer Webseite zu gewährleisten und uns vor automatisierten Eingaben (Angriffen) zu schützen.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Social Media</h2>
+            <p>Falls auf dieser Website Facebook Social Plugins zum Einsatz kommen, so werden diese von der Facebook Inc. (1 Hacker Way, Menlo Park, California 94025, USA) betrieben. Erkennbar sind die Einbindungen an dem Facebook-Logo bzw. an den Begriffen „Like", „Gefällt mir", „Teilen" in den Farben Facebooks (Blau und Weiß). Informationen zu allen Facebook-Plugins finden Sie im folgenden Link: <a href="https://developers.facebook.com/docs/plugins/" target="_blank">https://developers.facebook.com/docs/plugins/</a></p>
+            <p>Die Plugins werden erst aktiviert, wenn Sie auf die entsprechenden Schaltflächen klicken. Sofern diese ausgegraut angezeigt werden, sind die Plugins inaktiv. Sie haben die Möglichkeit, die Plugins bei jedem Besuch zu aktivieren.</p>
+            <p>Die Plugins stellen eine direkte Verbindung zwischen Ihrem Browser und den Facebook-Servern her. Dies erfolgt erst nach der Aktivierung des Plugins. Der Websitebetreiber hat keinerlei Einfluss auf die Natur und den Umfang der Daten, welche das Plugin an die Server der Facebook Inc. übermittelt. Informationen dazu finden Sie hier: <a href="https://www.facebook.com/help/186325668085084" target="_blank">https://www.facebook.com/help/186325668085084</a></p>
+            <p>Das Plugin informiert die Facebook Inc. darüber, dass Sie als Nutzer diese Website besucht haben. Es besteht hierbei die Möglichkeit, dass Ihre IP-Adresse gespeichert wird. Sind Sie während des Besuchs auf dieser Website in Ihrem Facebook-Konto eingeloggt, werden die genannten Informationen mit diesem verknüpft.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Rechtsgrundlage für die Datenverarbeitung</h2>
+            <p>Auf der Website werden Daten ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003) verarbeitet.</p>
+            <p>Die Datenverarbeitung (Webshop, Produktbewertungen, Buchungstool und Nutzeraccount) erfolgt auf Grundlage des Art 6 Abs. 1 lit. b) (Vertragserfüllungszwecke) DSGVO.</p>
+            <p>Im Falle des Einsatzes von Analysetools erfolgt die Datenverwendung auf Grundlage des Art 6 Abs. 1 lit f) (berechtigtes Interesse) DSGVO. Das berechtigte Interesse an der Datenverwendung ist die Verbesserung des Webauftritts sowie die Erfolgsmessung von Online-Werbung.</p>
+            <p>Der Einsatz von IT-Datensicherheitsmaßnahmen erfolgt ebenfalls auf Grundlage des Art 6 Abs. 1 lit f) (berechtigtes Interesse) DSGVO. Das berechtigte Interesse an der Datenverwendung ist die Absicherung der eigenen IT-Systeme.</p>
+            <p>Der Einsatz von Social-Media-Plugins erfolgt nur nach Einwilligung. Rechtsgrundlage ist daher Art. 6 Abs. 1 lit a) DSGVO. Die Einwilligung ist bei jedem Website-Aufruf erneut zu erteilen.</p>
+        </section>
+
+        <section class="legal-section">
+            <h2>Ihre Rechte</h2>
+            <p>Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der Aufsichtsbehörde beschweren. In Österreich ist dies die Datenschutzbehörde.</p>
+        </section>
+    </div>
+</div>
+
+<Footer />

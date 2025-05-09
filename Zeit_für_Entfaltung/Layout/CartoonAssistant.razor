@@ -1,0 +1,584 @@
+﻿@inject IJSRuntime JSRuntime
+@implements IAsyncDisposable
+
+<style>
+    /* Assistant Container */
+    .cartoon-assistant {
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        display: flex;
+        align-items: flex-end;
+        z-index: 999;
+        transition: all 0.3s ease-in-out;
+        max-width: 450px;
+        pointer-events: none;
+    }
+
+        .cartoon-assistant.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            visibility: hidden;
+        }
+
+        .cartoon-assistant.visible {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+            pointer-events: all;
+        }
+
+    /* Character styling */
+    .cartoon-character {
+        width: 80px;
+        height: 100px;
+        border-radius: 12px;
+        border: 3px solid var(--primary-color, #2c5282);
+        background-color: white;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex-shrink: 0;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        z-index: 2;
+        margin-right: -5px;
+        position: relative;
+    }
+
+        .cartoon-character:hover {
+            transform: scale(1.05);
+        }
+
+        .cartoon-character .image-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cartoon-character img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+    /* Control buttons - now directly over the character */
+    .character-controls {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .cartoon-character:hover .character-controls {
+        opacity: 1;
+    }
+
+    .control-button {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: var(--primary-color, #2c5282);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+        .control-button:hover {
+            background-color: var(--primary-dark, #1a365d);
+            transform: scale(1.1);
+        }
+
+        .control-button.active {
+            background-color: #e53e3e;
+        }
+
+    /* Status indicator */
+    .status-indicator {
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #48bb78; /* Green */
+        border: 2px solid white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        z-index: 3; /* Above the controls overlay */
+    }
+
+        .status-indicator.muted {
+            background-color: #e53e3e; /* Red */
+        }
+
+    /* Speech bubble */
+    .speech-bubble {
+        background-color: white;
+        border-radius: 20px;
+        padding: 0;
+        max-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        position: relative;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+        border: 2px solid var(--primary-color, #2c5282);
+        z-index: 1;
+    }
+
+    .expanded .speech-bubble {
+        max-width: 350px;
+        padding: 15px 20px;
+        white-space: normal;
+        opacity: 1;
+    }
+
+    .speech-bubble-content {
+        font-size: 1rem;
+        color: var(--text-color, #2d3748);
+        line-height: 1.5;
+    }
+
+        .speech-bubble-content p {
+            margin: 0;
+            padding: 0;
+        }
+
+    /* Mini assistant icon (when minimized) - now using expand/maximize icon */
+    .mini-assistant {
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: var(--primary-color, #2c5282);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    }
+
+        .mini-assistant:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-dark, #1a365d);
+        }
+
+    /* Muted state */
+    .cartoon-assistant.muted .cartoon-character {
+        opacity: 0.7;
+    }
+
+    /* Mobile responsive styles */
+    @@media (max-width: 768px) {
+        .cartoon-assistant {
+            max-width: 350px;
+        }
+
+        .cartoon-character {
+            width: 70px;
+            height: 90px;
+        }
+
+        .expanded .speech-bubble {
+            max-width: 280px;
+            padding: 12px 15px;
+        }
+
+        .speech-bubble-content {
+            font-size: 0.95rem;
+        }
+
+        .control-button {
+            width: 28px;
+            height: 28px;
+            font-size: 14px;
+        }
+
+        .mini-assistant {
+            width: 32px;
+            height: 32px;
+            font-size: 14px;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .cartoon-assistant {
+            left: 10px;
+            bottom: 10px;
+            max-width: 300px;
+        }
+
+        .cartoon-character {
+            width: 60px;
+            height: 75px;
+        }
+
+        .expanded .speech-bubble {
+            max-width: 230px;
+            padding: 10px 12px;
+        }
+
+        .speech-bubble-content {
+            font-size: 0.9rem;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+        }
+
+        .control-button {
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+        }
+
+        .mini-assistant {
+            width: 28px;
+            height: 28px;
+            font-size: 12px;
+            left: 10px;
+            bottom: 10px;
+        }
+    }
+</style>
+
+@if (!IsMinimized)
+{
+    <!-- Full Assistant View -->
+    <div class="cartoon-assistant @(IsVisible ? "visible" : "hidden") @(IsExpanded ? "expanded" : "") @(IsMuted ? "muted" : "")" @onclick="@ToggleSpeechBubble">
+        <div class="cartoon-character">
+            <div class="image-container">
+                <img src="./images/cartoonandreas.jpg" alt="Cartoon Assistant" />
+            </div>
+            <div class="status-indicator @(IsMuted ? "muted" : "")"></div>
+            <div class="character-controls">
+                <div class="control-button mute-button @(IsMuted ? "active" : "")" @onclick="@ToggleMuteStatus" @onclick:stopPropagation title="@(IsMuted ? "Hinweise aktivieren" : "Hinweise pausieren")">
+                    <span>@(IsMuted ? "🔇" : "🔊")</span>
+                </div>
+                <div class="control-button minimize-button" @onclick="@MinimizeAssistant" @onclick:stopPropagation title="Minimieren">
+                    <span>−</span>
+                </div>
+            </div>
+        </div>
+        <div class="speech-bubble">
+            <div class="speech-bubble-content">
+                <p>@CurrentMessage</p>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <!-- Minimized State -->
+    <div class="mini-assistant" @onclick="@RestoreAssistant" title="Assistent maximieren">
+        <span>⤢</span>
+    </div>
+}
+
+@code {
+    [Parameter]
+   public string CharacterImageUrl { get; set; } = "/images/oilavatar.png";
+
+    [Parameter]
+    public List<ScrollTriggerMessage> Messages { get; set; } = new();
+
+    [Parameter]
+    public bool StartVisible { get; set; } = true;
+
+    [Parameter]
+    public bool AutoShowOnScroll { get; set; } = true;
+
+    [Parameter]
+    public int InitialDelay { get; set; } = 2000;
+
+    [Parameter]
+    public Dictionary<string, string> SectionMessages { get; set; } = new();
+
+    [Parameter]
+    public int MessageDebounceMs { get; set; } = 1500;
+
+    private bool IsVisible { get; set; } = true;
+    private bool IsExpanded { get; set; } = true;
+    private bool IsMuted { get; set; } = false;
+    private bool IsMinimized { get; set; } = false;
+    private string CurrentMessage { get; set; } = "Willkommen auf unserer Website! Schauen Sie sich gerne um.";
+    private DotNetObjectReference<CartoonAssistant> objRef;
+    private bool isInitialized = false;
+    private int lastScrollPercentage = -1;
+    private string lastMessageKey = "";
+    private DateTime lastMessageChange = DateTime.MinValue;
+    private bool isProcessingAction = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            objRef = DotNetObjectReference.Create(this);
+
+            try
+            {
+                var savedState = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "cartoonAssistantState");
+                if (!string.IsNullOrEmpty(savedState))
+                {
+                    var state = System.Text.Json.JsonSerializer.Deserialize<AssistantState>(savedState);
+                    if (state != null)
+                    {
+                        IsMuted = state.IsMuted;
+                        IsMinimized = state.IsMinimized;
+                        IsExpanded = !state.IsMuted;
+                    }
+                }
+
+                await JSRuntime.InvokeVoidAsync(
+                    "cartoonAssistantInit",
+                    objRef,
+                    Messages.Select(m => new { m.ScrollPercentage, m.Message }).ToArray(),
+                    AutoShowOnScroll && !IsMuted,
+                    SectionMessages,
+                    MessageDebounceMs
+                );
+
+                isInitialized = true;
+
+                if (!IsMinimized && StartVisible)
+                {
+                    await Task.Delay(InitialDelay);
+                    IsVisible = true;
+                    IsExpanded = true;
+                    await InvokeAsync(StateHasChanged);
+                }
+            }
+            catch { }
+        }
+    }
+
+    [JSInvokable]
+    public async Task UpdateMessage(string message, string source, int scrollPercentage = -1, string messageKey = "")
+    {
+        if (IsMuted || IsMinimized) return;
+        if ((DateTime.Now - lastMessageChange).TotalMilliseconds < MessageDebounceMs) return;
+        if (source == "scroll" && scrollPercentage < lastScrollPercentage && lastScrollPercentage - scrollPercentage > 5) return;
+        if (messageKey == lastMessageKey && !string.IsNullOrEmpty(messageKey)) return;
+
+        if (scrollPercentage >= 0) lastScrollPercentage = scrollPercentage;
+
+        lastMessageKey = messageKey;
+        lastMessageChange = DateTime.Now;
+        CurrentMessage = message;
+
+        IsVisible = true;
+        IsExpanded = true;
+
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private async Task ToggleSpeechBubble()
+    {
+        if (isProcessingAction) return;
+        isProcessingAction = true;
+        IsExpanded = !IsExpanded;
+        await InvokeAsync(StateHasChanged);
+        isProcessingAction = false;
+    }
+
+    private async Task ToggleMuteStatus()
+    {
+        if (isProcessingAction) return;
+        isProcessingAction = true;
+        IsMuted = !IsMuted;
+        if (IsMuted) IsExpanded = false;
+        await SaveStateToLocalStorage();
+        await JSRuntime.InvokeVoidAsync("cartoonAssistantSetAutoShow", !IsMuted);
+        await InvokeAsync(StateHasChanged);
+        isProcessingAction = false;
+    }
+
+    private async Task MinimizeAssistant()
+    {
+        if (isProcessingAction) return;
+        isProcessingAction = true;
+        IsMinimized = true;
+        await SaveStateToLocalStorage();
+        await InvokeAsync(StateHasChanged);
+        isProcessingAction = false;
+    }
+
+    private async Task RestoreAssistant()
+    {
+        if (isProcessingAction) return;
+        isProcessingAction = true;
+        IsMinimized = false;
+        IsVisible = true;
+        if (!IsMuted) IsExpanded = true;
+        await SaveStateToLocalStorage();
+        await InvokeAsync(StateHasChanged);
+        isProcessingAction = false;
+    }
+
+    private async Task SaveStateToLocalStorage()
+    {
+        var state = new AssistantState { IsMuted = IsMuted, IsMinimized = IsMinimized };
+        var json = System.Text.Json.JsonSerializer.Serialize(state);
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "cartoonAssistantState", json);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (isInitialized)
+        {
+            await JSRuntime.InvokeVoidAsync("cartoonAssistantDispose");
+        }
+        objRef?.Dispose();
+    }
+
+    public class ScrollTriggerMessage
+    {
+        public int ScrollPercentage { get; set; }
+        public string Message { get; set; }
+    }
+
+    private class AssistantState
+    {
+        public bool IsMuted { get; set; }
+        public bool IsMinimized { get; set; }
+    }
+}
+<script>
+    /* ------------------------------------------------------------------
+       Cartoon‑Assistant runtime – centre‑line section detector
+    -------------------------------------------------------------------*/
+    window.cartoonAssistantInit = function (dotNetHelper,
+                                            messages,        // [{scrollPercentage, message}]
+                                            autoShow,
+                                            sectionMessages, // { idOrClass : message }
+                                            debounceMs) {
+
+      /* ---------- shared state ---------- */
+      const ca = window.cartoonAssistant = {
+        dotNetHelper,
+        sectionMsgs: sectionMessages || {},
+        autoShow:   !!autoShow,
+        pctMsgs:    (messages || []).sort((a, b) => a.scrollPercentage - b.scrollPercentage),
+        debounce:   debounceMs || 1500,
+        lastPct:          -1,
+        lastSectionKey:   '',
+        isUpdating:       false,
+        pctTimeout:       null,
+        updateTimeout:    null,
+        ticking:          false,
+        sections:   Array.from(document.querySelectorAll('section'))
+      };
+
+      /* ---------- helpers ---------- */
+      function triggerMessage(msg, src, pct, key) {
+        if (!msg) return;
+        if (ca.isUpdating) clearTimeout(ca.updateTimeout);
+
+        ca.isUpdating = true;
+        ca.updateTimeout = setTimeout(() => {
+          ca.dotNetHelper.invokeMethodAsync('UpdateMessage', msg, src, pct, key || '');
+          ca.isUpdating = false;
+        }, 100);
+      }
+
+      /* ---------- which section is “active”? ---------- */
+      function handleSectionCentre() {
+        if (!ca.autoShow || !ca.sections.length) return;
+
+        const centreY   = window.innerHeight * 0.4;          // 40 % down from top feels natural
+        let   candidate = null;
+
+        for (const sec of ca.sections) {
+          const r = sec.getBoundingClientRect();
+          if (r.top <= centreY && r.bottom >= centreY) {     // centre line is inside this section
+            candidate = sec;
+            break;
+          }
+        }
+
+        if (!candidate) return;
+
+        let key = candidate.id;
+        let msg = ca.sectionMsgs[key];
+
+        if (!msg) {
+          for (const cls of candidate.classList) {
+            if (ca.sectionMsgs[cls]) { msg = ca.sectionMsgs[cls]; key = cls; break; }
+          }
+        }
+
+        if (msg && key !== ca.lastSectionKey) {
+          ca.lastSectionKey = key;
+          triggerMessage(msg, 'section', -1, key);
+        }
+      }
+
+      /* ---------- scroll‑percentage messages ---------- */
+      function handleScrollPercent() {
+        if (!ca.autoShow || !ca.pctMsgs.length) return;
+
+        clearTimeout(ca.pctTimeout);
+        ca.pctTimeout = setTimeout(() => {
+          const top    = window.pageYOffset || document.documentElement.scrollTop;
+          const height = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
+          const pct    = Math.round(top / height * 100);
+
+          if (Math.abs(pct - ca.lastPct) < 5) return; // 5 % hysteresis
+          ca.lastPct = pct;
+
+          for (let i = ca.pctMsgs.length - 1; i >= 0; i--) {
+            if (pct >= ca.pctMsgs[i].scrollPercentage) {
+              triggerMessage(ca.pctMsgs[i].message, 'scroll', pct, 'scroll-' + i);
+              break;
+            }
+          }
+        }, 100);
+      }
+
+      /* ---------- master scroll handler (rAF throttled) ---------- */
+      function onScroll() {
+        if (ca.ticking) return;
+        ca.ticking = true;
+        requestAnimationFrame(() => {
+          handleSectionCentre();
+          handleScrollPercent();
+          ca.ticking = false;
+        });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      /* ---------- public API for Blazor ---------- */
+      window.cartoonAssistantSetAutoShow = auto => ca.autoShow = !!auto;
+
+      /* ---------- tidy‑up ---------- */
+      window.cartoonAssistantDispose = function () {
+        window.removeEventListener('scroll', onScroll);
+        clearTimeout(ca.pctTimeout);
+        clearTimeout(ca.updateTimeout);
+        window.cartoonAssistant = null;
+      };
+    };
+</script>
