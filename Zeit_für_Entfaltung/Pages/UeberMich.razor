@@ -3,387 +3,289 @@
 
 <PageTitle>Über Mich - Zeit für Entfaltung</PageTitle>
 
-<style>
-    /* About Me Page Styles - Component Scoped */
-
-    .about-me-hero {
-        position: relative;
-        min-height: 30vh;
-        background-color: #b0b1a8;
-        background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.8), rgba(112, 97, 87, 0.6));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 4rem 2rem;
-        overflow: hidden;
-    }
-
-        .about-me-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
-            z-index: 1;
-        }
-
-    .about-me-section {
-        padding: 5rem 0 3rem;
-        background-color: #fff;
-    }
-
-    .about-me-image-container {
-        position: relative;
-        margin-bottom: 2rem;
-    }
-
-    .about-me-image {
-        width: 100%;
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.15);
-        transition: all 0.4s ease;
-    }
-
-        .about-me-image:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(112, 97, 87, 0.2);
-        }
-
-    .about-me-name {
-        position: absolute;
-        bottom: -15px;
-        left: 20px;
-        background-color: #5a5e5c;
-        color: white;
-        padding: 0.7rem 2rem;
-        border-radius: 30px;
-        box-shadow: 0 4px 15px rgba(112, 97, 87, 0.2);
-    }
-
-        .about-me-name h2 {
-            margin: 0;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: white;
-        }
-
-    .about-me-content {
-        padding: 1.5rem;
-        height: 100%;
-    }
-
-    .about-me-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.8rem;
-        color: #4e4636;
-        margin-bottom: 1.5rem;
-        position: relative;
-        display: inline-block;
-    }
-
-        .about-me-title:after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background-color: #b0b1a8;
-            bottom: -10px;
-            left: 0;
-        }
-
-    .about-me-content p {
-        margin-bottom: 1.2rem;
-        font-size: 1.05rem;
-        line-height: 1.7;
-    }
-
-    .qualifications-section {
-        background-color: #f5f4f1;
-        padding: 5rem 0;
-        position: relative;
-        overflow: hidden;
-    }
-
-        .qualifications-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b0b1a8' fill-opacity='0.1'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.7;
-            z-index: 0;
-        }
-
-    .qualifications-title {
-        text-align: center;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.5rem;
-        color: #4e4636;
-        margin-bottom: 1rem;
-        position: relative;
-        z-index: 1;
-    }
-
-    .qualifications-divider {
-        width: 80px;
-        height: 3px;
-        background-color: #b0b1a8;
-        margin: 0 auto 3rem;
-        position: relative;
-        z-index: 1;
-    }
-
-    .qualifications-list {
-        list-style: none;
-        padding-left: 0;
-        margin-bottom: 2rem;
-        position: relative;
-        z-index: 1;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-        .qualifications-list li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 1.2rem;
-            font-size: 1.15rem;
-            text-align: left;
-        }
-
-            .qualifications-list li:before {
-                content: '';
-                position: absolute;
-                top: 10px;
-                left: 0;
-                width: 8px;
-                height: 8px;
-                border-radius: 50%;
-                background-color: #b0b1a8;
-                box-shadow: 0 0 0 2px rgba(176, 177, 168, 0.3);
-            }
-
-    .contact-section {
-        padding: 5rem 0;
-        background-color: #fff;
-        text-align: center;
-    }
-
-    .contact-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.5rem;
-        color: #4e4636;
-        margin-bottom: 1rem;
-        position: relative;
-        display: inline-block;
-    }
-
-        .contact-title:after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background-color: #b0b1a8;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-    .contact-list {
-        list-style: none;
-        padding-left: 0;
-        margin: 3rem auto;
-        position: relative;
-        max-width: 600px;
-    }
-
-        .contact-list li {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-            .contact-list li a {
-                color: #4e4636;
-                text-decoration: none;
-                transition: color 0.3s ease;
-                display: flex;
-                align-items: center;
-            }
-
-                .contact-list li a:hover {
-                    color: #b0b1a8;
-                }
-
-            .contact-list li i {
-                margin-right: 10px;
-                font-size: 1.5rem;
-                color: #b0b1a8;
-            }
-
-    @@keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Responsive adjustments */
-    @@media (max-width: 992px) {
-        .about-me-hero {
-            min-height: auto;
-            padding: 3rem 1rem;
-        }
-
-        .about-me-title {
-            font-size: 2.4rem;
-        }
-
-        .about-me-content {
-            padding: 1rem 0;
-        }
-    }
-
-    .hero-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 3.5rem;
-        color: #fff;
-        text-align: center;
-        margin: 0;
-        position: relative;
-        z-index: 2;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    @@media (max-width: 768px) {
-        .hero-title {
-            font-size: 2.8rem;
-        }
-
-        .qualifications-list li {
-            font-size: 1.1rem;
-        }
-
-        .about-me-name {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .about-me-title:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .about-me-title {
-            display: block;
-            text-align: center;
-        }
-    }
-
-    @@media (max-width: 576px) {
-        .about-me-name h2 {
-            font-size: 1.5rem;
-        }
-
-        .about-me-title {
-            font-size: 2rem;
-        }
-
-        .qualifications-title {
-            font-size: 2rem;
-        }
-
-        .contact-title {
-            font-size: 2rem;
-        }
-    }
-</style>
-
-<div class="about-me-hero">
-    <!-- Hero with title -->
-    <h1 class="hero-title">Über Mich</h1>
-</div>
-
-<section class="about-me-section">
+<section class="about-me-section section">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 mb-4 mb-lg-0">
-                <div class="about-me-image-container">
-                    <img src="images/AboutMePicture.jpg" alt="Jeannette Fröhlich" class="about-me-image" />
-                    <div class="about-me-name">
+                <div class="about-image-container animate-fadeInLeft" style="animation-delay: 0.3s">
+                    <img src="images/AboutMePicture.jpg" alt="Jeannette Fröhlich" class="about-image" />
+                    <div class="about-name-badge">
                         <h2>Jeannette</h2>
                     </div>
                 </div>
             </div>
             <div class="col-lg-7">
-                <div class="about-me-content">
-                    <p>Ich bin Mama von zwei wundervollen Wirbelwinden, glücklich verheiratet und befinde mich aktuell in der Anerkennung meiner Erzieherausbildung – ein Herzensweg, den ich mit voller Leidenschaft gehe.</p>
+                <div class="about-content-card animate-fadeInRight" style="animation-delay: 0.5s">
+                    <h2 class="section-heading">Herzlich Willkommen</h2>
+                    <div class="divider"></div>
+                    
+                    <p class="main-text">Ich bin Mama von zwei wundervollen Wirbelwinden, glücklich verheiratet und befinde mich aktuell in der Anerkennung meiner Erzieherausbildung – ein Herzensweg, den ich mit voller Leidenschaft gehe.</p>
 
-                    <p>Meine größte Motivation ist es, Kinder und Familien ganzheitlich zu stärken und sie dabei zu begleiten, ihr wahres Potenzial zu entdecken. Ich glaube daran, dass in jedem von uns ein einzigartiges Licht strahlt – manchmal braucht es nur ein wenig Unterstützung, damit es sichtbar wird.</p>
+                    <p class="main-text">Meine größte Motivation ist es, Kinder und Familien ganzheitlich zu stärken und sie dabei zu begleiten, ihr wahres Potenzial zu entdecken. Ich glaube daran, dass in jedem von uns ein einzigartiges Licht strahlt – manchmal braucht es nur ein wenig Unterstützung, damit es sichtbar wird.</p>
 
-                    <p>Mit meinem „Schilli Schildkröte"-Konzept möchte ich Kindern Mut machen, ihre Individualität zu leben und ihre eigenen Stärken zu erkennen. Gleichzeitig verbinde ich die Kraft ätherischer Öle mit dem Wissen aus dem Human Design, um Familien energetisch und emotional zu begleiten.</p>
+                    <p class="main-text">Mit meinem „Schilli Schildkröte"-Konzept möchte ich Kindern Mut machen, ihre Individualität zu leben und ihre eigenen Stärken zu erkennen. Gleichzeitig verbinde ich die Kraft ätherischer Öle mit dem Wissen aus dem Human Design, um Familien energetisch und emotional zu begleiten.</p>
 
-                    <p>Mein Herzenswunsch ist es, Räume zu schaffen, in denen Menschen sich selbst wieder näherkommen – voller Vertrauen, Liebe und in Verbindung mit ihrer inneren Kraft.</p>
+                    <p class="main-text">Mein Herzenswunsch ist es, Räume zu schaffen, in denen Menschen sich selbst wieder näherkommen – voller Vertrauen, Liebe und in Verbindung mit ihrer inneren Kraft.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="qualifications-section">
+<section class="qualifications-section section section-light">
     <div class="container">
-        <h2 class="qualifications-title">Meine Ausbildungen</h2>
-        <div class="qualifications-divider"></div>
         <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <ul class="qualifications-list">
-                    <li>Erzieherin in der Anerkennung</li>
-                    <li>Human Design Coach</li>
-                    <li>zertifizierte Aromaberaterin</li>
-                    <li>Ganzheitlicher Kinder, Jugend &amp; Familiencoach</li>
-                    <li>Kinderstärkerin</li>
-                    <li>Lerntherapeutin</li>
-                    <li>Yogalehrerin</li>
-                </ul>
+            <div class="col-lg-8">
+                <div class="qualifications-card animate-scaleIn">
+                    <h2 class="section-heading text-center">Meine Ausbildungen</h2>
+                    <div class="divider"></div>
+                    
+                    <ul class="qualifications-list">
+                        <li class="qualification-item">Erzieherin in der Anerkennung</li>
+                        <li class="qualification-item">Human Design Coach</li>
+                        <li class="qualification-item">zertifizierte Aromaberaterin</li>
+                        <li class="qualification-item">Ganzheitlicher Kinder, Jugend &amp; Familiencoach</li>
+                        <li class="qualification-item">Kinderstärkerin</li>
+                        <li class="qualification-item">Lerntherapeutin</li>
+                        <li class="qualification-item">Yogalehrerin</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="contact-section">
+<section class="contact-section section">
     <div class="container">
-        <h2 class="contact-title">Kontakt</h2>
-        <div class="qualifications-divider"></div>
         <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6">
-                <ul class="contact-list">
-                    <li>
-                        <a href="https://www.instagram.com/zeit_fuer_entfaltung/" target="_blank">
-                            <i class="fab fa-instagram"></i>@@zeit_fuer_entfaltung
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/zeit_fuer_oeleliebe/" target="_blank">
-                            <i class="fab fa-instagram"></i>@@zeit_fuer_oeleliebe
-                        </a>
-                    </li>
-                </ul>
+            <div class="col-lg-8">
+                <div class="contact-card animate-scaleIn">
+                    <h2 class="section-heading text-center">Kontakt</h2>
+                    <div class="divider"></div>
+                    
+                    <p class="contact-intro quote text-center">Ich freue mich darauf, dich kennenzulernen.</p>
+                    
+                    <ul class="contact-list">
+                        <li class="contact-item">
+                            <a href="https://www.instagram.com/zeit_fuer_entfaltung/" target="_blank" class="contact-link">
+                                <i class="fab fa-instagram"></i>
+                                <span>@@zeit_fuer_entfaltung</span>
+                            </a>
+                        </li>
+                        <li class="contact-item">
+                            <a href="https://www.instagram.com/zeit_fuer_oeleliebe/" target="_blank" class="contact-link">
+                                <i class="fab fa-instagram"></i>
+                                <span>@@zeit_fuer_oeleliebe</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <div class="cta-container">
+                        <a href="kontakt" class="btn">Kontakt aufnehmen</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    /* About Me Page Styles - Updated to match theme.css */
+    
+    /* Hero Section */
+    .about-hero {
+        background-color: var(--light-green);
+    }
+    
+    .about-hero .hero-background {
+        background-image: 
+            radial-gradient(circle at 30% 40%, rgba(131, 167, 143, 0.2) 0%, transparent 30%),
+            radial-gradient(circle at 70% 60%, rgba(131, 167, 143, 0.2) 0%, transparent 30%);
+    }
+    
+    /* About Section */
+    .about-image-container {
+        position: relative;
+        border-radius: var(--radius-lg);
+        overflow: visible;
+        margin-bottom: var(--space-md);
+    }
+    
+    .about-image {
+        width: 100%;
+        height: auto;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        transition: transform var(--transition-medium);
+    }
+    
+    .about-image:hover {
+        transform: translateY(-5px);
+    }
+    
+    .about-name-badge {
+        position: absolute;
+        bottom: -15px;
+        left: 20px;
+        background-color: var(--primary-green);
+        color: white;
+        padding: 0.7rem 2rem;
+        border-radius: var(--radius-rounded);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .about-name-badge h2 {
+        margin: 0;
+        font-family: var(--quote-font);
+        font-size: 1.8rem;
+        color: white;
+        font-weight: 500;
+    }
+    
+    .about-content-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-md);
+        height: 100%;
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    /* Qualifications Section */
+    .qualifications-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    .section-heading {
+        color: var(--primary-green);
+        margin-bottom: var(--space-sm);
+        font-weight: 600;
+    }
+    
+    .qualifications-list {
+        list-style: none;
+        padding: 0;
+        margin: var(--space-md) auto;
+        max-width: 600px;
+    }
+    
+    .qualification-item {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: var(--space-sm);
+        font-size: 1.1rem;
+        color: var(--corduroy);
+    }
+    
+    .qualification-item::before {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: var(--secondary-green);
+        box-shadow: 0 0 0 2px rgba(131, 167, 143, 0.3);
+    }
+    
+    /* Contact Section */
+    .contact-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    .contact-intro {
+        margin-bottom: var(--space-md);
+    }
+    
+    .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: var(--space-md) auto;
+        max-width: 450px;
+    }
+    
+    .contact-item {
+        margin-bottom: var(--space-sm);
+        text-align: center;
+    }
+    
+    .contact-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 1.1rem;
+        color: var(--accent-green);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+    }
+    
+    .contact-link:hover {
+        color: var(--secondary-green);
+    }
+    
+    .contact-link i {
+        margin-right: 10px;
+        font-size: 1.5rem;
+    }
+    
+    .cta-container {
+        text-align: center;
+        margin-top: var(--space-md);
+    }
+    
+    /* Responsive Adjustments */
+    @@media (max-width: 992px) {
+        .about-content-card,
+        .qualifications-card,
+        .contact-card {
+            padding: var(--space-md);
+        }
+        
+        .about-name-badge {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    
+    @@media (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+        
+        .hero-tagline {
+            font-size: 1.3rem;
+        }
+        
+        .about-name-badge h2 {
+            font-size: 1.5rem;
+        }
+        
+        .section-heading {
+            font-size: 1.8rem;
+        }
+    }
+    
+    @@media (max-width: 576px) {
+        .about-content-card,
+        .qualifications-card,
+        .contact-card {
+            padding: var(--space-sm);
+        }
+        
+        .qualification-item,
+        .contact-link {
+            font-size: 1rem;
+        }
+    }
+</style>
 
 @code {
     // Component code here

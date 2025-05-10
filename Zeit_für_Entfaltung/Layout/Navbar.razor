@@ -1,7 +1,7 @@
 ﻿<nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="/schilli">
-            <img src="images/Schildi.jpg" alt="Schildi Logo" class="navbar-logo" />
+        <a class="navbar-brand" href="/">
+            <img src="images/Schildi.png" alt="Schildi Logo" class="navbar-logo" />
             <span class="brand-text">Zeit für Entfaltung</span>
         </a>
         <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -46,120 +46,217 @@
 </nav>
 
 <style>
-    /* Navbar Styles */
+    /* Modern Navbar Styles - Overhauled Design: "Gentle Unfolding" */
+    :root {
+        --navbar-height: 70px;
+        --navbar-padding-y: 0.8rem;
+        --navbar-bg-start: rgba(248, 250, 248, 0.85); /* Lighter, slightly green-tinted white */
+        --navbar-bg-end: rgba(240, 245, 240, 0.9);
+        --navbar-shadow: 0 2px 8px rgba(90, 132, 110, 0.06);
+        --brand-text-color: var(--primary-green); /* Re-using existing variable */
+        --nav-link-color: var(--corduroy); /* Re-using existing variable */
+        --nav-link-hover-color: var(--accent-green);
+        --nav-link-active-color: var(--primary-green);
+        --nav-link-underline-height: 2px;
+    }
+
     .navbar {
-        background-color: white;
-        box-shadow: 0 2px 15px rgba(112, 97, 87, 0.08);
-        padding: 0.8rem 0;
-        transition: all 0.3s ease;
+        background: linear-gradient(180deg, var(--navbar-bg-start) 0%, var(--navbar-bg-end) 100%);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: var(--navbar-shadow);
+        padding: var(--navbar-padding-y) 0;
+        min-height: var(--navbar-height);
+        transition: all var(--transition-medium);
+        border-bottom: 1px solid rgba(90, 132, 110, 0.05);
+    }
+
+    .navbar:hover {
+        box-shadow: 0 4px 12px rgba(90, 132, 110, 0.08);
     }
 
     .navbar-logo {
-        height: 45px;
-        margin-right: 12px;
-        transition: all 0.3s ease;
+        height: 40px; /* Slightly smaller for a more refined look */
+        transition: transform var(--transition-medium);
     }
 
+    /* Removed hover effect for logo to keep it simple */
+
     .brand-text {
-        font-family: 'Cormorant Garamond', serif;
-        color: var(--taupe-color);
-        font-size: 1.5rem;
-        font-weight: 500;
-        margin-left: 10px;
-        transition: all 0.3s ease;
+        font-family: var(--heading-font);
+        color: var(--brand-text-color);
+        font-size: 1.3rem; /* Slightly adjusted */
+        font-weight: 500; /* Lighter weight */
+        letter-spacing: -0.2px;
+        margin-left: 12px; /* Adjusted spacing */
+        transition: color var(--transition-fast);
+    }
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-brand:hover .brand-text {
+        color: var(--nav-link-hover-color);
     }
 
     .navbar-nav {
         margin-left: auto;
     }
 
+    .nav-item {
+        margin: 0 2px; /* Slightly reduced margin */
+    }
+
     .nav-link {
-        color: var(--taupe-color);
-        margin: 0 10px;
-        padding: 8px 5px;
+        color: var(--nav-link-color);
+        padding: 10px 15px; /* Adjusted padding */
+        border-radius: var(--radius-md); /* Softer radius */
+        font-weight: 500;
+        font-size: 0.9rem;
+        letter-spacing: 0.2px;
+        transition: color var(--transition-fast), background-color var(--transition-fast);
         position: relative;
-        font-weight: 400;
-        transition: all 0.3s ease;
+        overflow: hidden; /* Keep for potential future effects, but not strictly needed for underline */
+        background-color: transparent; /* Ensure no default bg */
     }
 
     .nav-text {
         position: relative;
+        z-index: 2;
+        /* transition: transform var(--transition-fast); // Removed as it might interfere with text clarity */
+    }
+
+    /* Underline animation for hover and active states */
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 5px; /* Position underline closer to text */
+        left: 50%; /* Start from center for unfold effect */
+        width: 0;
+        height: var(--nav-link-underline-height);
+        background-color: var(--nav-link-hover-color);
+        border-radius: var(--nav-link-underline-height);
+        transition: width var(--transition-medium) ease-out, left var(--transition-medium) ease-out;
         z-index: 1;
     }
 
-    .nav-link.active {
-        color: var(--corduroy-color);
-        font-weight: 500;
+    .nav-link:not(.active):hover {
+        color: var(--nav-link-hover-color);
+        background-color: transparent; /* Ensure no bg color on hover */
+        /* transform: translateY(-2px); // Removed this transform */
     }
 
-    .nav-link:before {
+    .nav-link:not(.active):hover::after {
+        width: calc(100% - 30px); /* Full width minus padding */
+        left: 15px; /* Align with padding */
+    }
+
+    .nav-link.active {
+        color: var(--nav-link-active-color);
+        font-weight: 600; /* Make active link text slightly bolder */
+        background-color: transparent; /* No background color */
+        box-shadow: none; /* Remove previous box-shadow */
+    }
+
+    .nav-link.active::after {
         content: '';
         position: absolute;
         bottom: 5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--bud-color);
-        transition: width 0.3s ease;
-        z-index: 0;
+        left: 15px;
+        width: calc(100% - 30px);
+        height: 0; /* Effectively removes the underline */
+        background-color: var(--nav-link-active-color);
+        border-radius: var(--nav-link-underline-height);
+        /* No transition needed for active state's initial render */
     }
 
-    .nav-link:hover {
-        color: var(--corduroy-color);
+    /* Remove the old hover effect that scaled the ::after element */
+    /* .nav-link:not(.active):hover:after { ... } was removed */
+
+    .custom-toggler {
+        border: 1px solid transparent; /* Cleaner look */
+        background-color: transparent; /* Transparent background */
+        border-radius: var(--radius-md);
+        padding: 0.5rem; /* Adjusted padding */
+        transition: background-color var(--transition-fast), border-color var(--transition-fast);
     }
 
-        .nav-link:hover:before,
-        .nav-link.active:before {
-            width: 100%;
-        }
-
-    .navbar-toggler {
-        border: none;
-        padding: 0.5rem;
+    .custom-toggler:hover {
+        background-color: rgba(90, 132, 110, 0.05); /* Subtle hover */
+        border-color: rgba(90, 132, 110, 0.1);
+        /* transform: rotate(5deg); // Removed rotation */
     }
 
     .custom-toggler .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(90, 94, 92, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        /* SVG icon color will be inherited, ensure it's set correctly or adjust SVG if needed */
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3e%3cpath stroke='rgba(var(--primary-green-rgb), 1)' stroke-linecap='round' stroke-width='2' d='M4 6h16M4 12h16M4 18h16'/%3e%3c/svg%3e"); /* Updated to use a CSS var if possible, or ensure color matches */
+        transition: transform var(--transition-fast);
+        width: 1.3em; /* Adjusted size */
+        height: 1.3em;
+    }
+
+    .custom-toggler:hover .navbar-toggler-icon {
+        transform: scale(1.05); /* More subtle hover scale */
     }
 
     .navbar-toggler:focus {
         outline: none;
-        box-shadow: none;
+        box-shadow: 0 0 0 2px rgba(90, 132, 110, 0.15); /* Softer focus ring */
     }
 
     @@media (max-width: 991.98px) {
         .navbar-collapse {
-            background-color: white;
+            background-color: var(--navbar-bg-end); /* Match navbar bg */
             padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 0.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg); /* Slightly more pronounced shadow for popped-out menu */
+            margin-top: 0.8rem;
+            max-height: calc(100vh - var(--navbar-height) - 2rem); /* Ensure it doesn't overlap footer etc. */
+            overflow-y: auto;
+            border: 1px solid rgba(90, 132, 110, 0.1);
+        }
+
+        .nav-item {
+            margin: 8px 0; /* Increased margin for touch targets */
         }
 
         .nav-link {
-            padding: 0.8rem 1rem;
-            margin: 0;
-            border-radius: 5px;
+            padding: 12px 20px; /* Generous padding for touch */
+            text-align: left; /* Align text to left for readability */
+            display: block; /* Make links full width */
+            border-radius: var(--radius-md);
         }
 
-            .nav-link:hover,
-            .nav-link.active {
-                background-color: rgba(176, 177, 168, 0.1);
-            }
+        .nav-link:not(.active):hover {
+            /* transform: translateX(5px); // Removed transform */
+            background-color: rgba(90, 132, 110, 0.05); /* Subtle hover bg */
+            color: var(--nav-link-hover-color);
+        }
+        .nav-link:not(.active):hover::after {
+            width: 0; /* Hide underline on mobile hover if using bg color */
+        }
 
-            .nav-link:before {
-                display: none;
-            }
-    }
+        .nav-link.active {
+            background-color: rgba(90, 132, 110, 0.1); /* Subtle active bg */
+            color: var(--nav-link-active-color);
+            font-weight: 600;
+        }
+        .nav-link.active::after {
+            width: 0; /* Hide underline on mobile for active link if using bg color */
+        }
 
-    /* CSS variables if not defined elsewhere */
-    :root {
-        --taupe-color: #706157;
-        --corduroy-color: #5a5e5c;
-        --bud-color: #b0b1a8;
+        .navbar-brand {
+            padding: 5px 0; /* Adjusted padding */
+        }
+
+        .brand-text {
+            font-size: 1.2rem; /* Adjusted for mobile */
+        }
     }
 </style>
 
 @code {
-    // No code needed for this component unless you want to add logic
+    // No code needed for this component
 }

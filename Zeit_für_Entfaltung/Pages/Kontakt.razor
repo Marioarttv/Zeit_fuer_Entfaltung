@@ -3,341 +3,66 @@
 
 <PageTitle>Kontakt - Zeit für Entfaltung</PageTitle>
 
-<style>
-    /* Kontakt Page Styles */
-    .kontakt-page {
-        font-family: 'Montserrat', sans-serif;
-        color: #4e4636;
-    }
 
-    .kontakt-hero {
-        position: relative;
-        min-height: 30vh;
-        background-color: #b0b1a8;
-        background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.8), rgba(112, 97, 87, 0.6));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 4rem 2rem;
-        overflow: hidden;
-        margin-bottom: 3rem;
-    }
-
-        .kontakt-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
-            z-index: 1;
-        }
-
-    .hero-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 3.5rem;
-        color: #fff;
-        text-align: center;
-        margin: 0;
-        position: relative;
-        z-index: 2;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .kontakt-info-section {
-        padding: 2rem 0 4rem;
-    }
-
-    .kontakt-info-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-    }
-
-    .kontakt-methods {
-        margin-bottom: 3rem;
-    }
-
-    .method-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.5rem;
-        padding: 1.5rem;
-        background-color: #f5f4f1;
-        border-radius: 8px;
-        transition: transform 0.3s ease, background-color 0.3s ease;
-    }
-
-        .method-item:hover {
-            transform: translateY(-3px);
-            background-color: #eeede9;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-    .method-icon {
-        flex: 0 0 60px;
-        height: 60px;
-        background-color: #706157;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 1.5rem;
-        color: white;
-        font-size: 1.5rem;
-    }
-
-    .method-content {
-        flex: 1;
-    }
-
-    .method-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
-        color: #4e4636;
-        margin-bottom: 0.5rem;
-    }
-
-    .method-text {
-        font-size: 1rem;
-        line-height: 1.5;
-        margin-bottom: 0.5rem;
-        color: #706157;
-    }
-
-    .method-link {
-        color: #706157;
-        font-weight: 500;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-        .method-link:hover {
-            color: #4e4636;
-        }
-
-    .form-section {
-        background-color: #f5f4f1;
-        padding: 4rem 0;
-    }
-
-    .form-container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2.5rem;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
-    }
-
-    .form-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.2rem;
-        color: #4e4636;
-        text-align: center;
-        margin-bottom: 2rem;
-        position: relative;
-        padding-bottom: 1rem;
-    }
-
-        .form-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background-color: #b0b1a8;
-        }
-
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
-
-    .form-label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: #706157;
-        font-weight: 500;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 0.8rem 1rem;
-        border: 1px solid #e5e4e1;
-        border-radius: 5px;
-        background-color: #f9f9f8;
-        transition: all 0.3s ease;
-    }
-
-        .form-control:focus {
-            outline: none;
-            border-color: #b0b1a8;
-            background-color: #fff;
-            box-shadow: 0 0 0 3px rgba(176, 177, 168, 0.2);
-        }
-
-        .form-control.textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-    .form-button {
-        display: inline-block;
-        background-color: #706157;
-        color: white;
-        padding: 0.8rem 2.5rem;
-        border: none;
-        border-radius: 30px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        margin-top: 1rem;
-    }
-
-        .form-button:hover {
-            background-color: #5a504a;
-            transform: translateY(-3px);
-        }
-
-        .form-button:disabled {
-            background-color: #b0b1a8;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-    .form-status {
-        margin-top: 1.5rem;
-        padding: 1rem;
-        border-radius: 5px;
-        text-align: center;
-    }
-
-        .form-status.success {
-            background-color: rgba(40, 167, 69, 0.1);
-            border: 1px solid rgba(40, 167, 69, 0.2);
-            color: #28a745;
-        }
-
-        .form-status.error {
-            background-color: rgba(220, 53, 69, 0.1);
-            border: 1px solid rgba(220, 53, 69, 0.2);
-            color: #dc3545;
-        }
-
-    /* Responsive adjustments */
-    @@media (max-width: 992px) {
-        .method-item {
-            padding: 1.2rem;
-        }
-
-        .method-icon {
-            flex: 0 0 50px;
-            height: 50px;
-            margin-right: 1rem;
-        }
-    }
-
-    @@media (max-width: 768px) {
-        .hero-title {
-            font-size: 2.8rem;
-        }
-
-        .form-title {
-            font-size: 2rem;
-        }
-
-        .form-container {
-            padding: 2rem;
-        }
-    }
-
-    @@media (max-width: 576px) {
-        .hero-title {
-            font-size: 2.3rem;
-        }
-
-        .method-item {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .method-icon {
-            margin-right: 0;
-            margin-bottom: 1rem;
-        }
-
-        .form-container {
-            padding: 1.5rem;
-        }
-
-        .form-title {
-            font-size: 1.8rem;
-        }
-    }
-</style>
 
 <div class="kontakt-page">
-    <!-- Hero Section -->
-    <section class="kontakt-hero">
-        <h1 class="hero-title">Kontakt</h1>
-    </section>
-
     <!-- Kontakt Info Section -->
-    <section class="kontakt-info-section">
-        <div class="kontakt-info-container">
-            <div class="kontakt-methods">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="method-item">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
+    <section class="kontakt-info-section section">
+        <div class="container">
+            <div class="contact-card animate-scaleIn">
+                <h2 class="section-heading text-center">Wie du mich erreichen kannst</h2>
+                <div class="divider"></div>
+                
+                <div class="kontakt-methods">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="method-item animate-fadeInLeft" style="animation-delay: 0.3s">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3 class="method-title">E-Mail</h3>
+                                    <p class="method-text">Schreib mir eine E-Mail und ich melde mich bei dir</p>
+                                    <a href="mailto:jeannette.froehlich@yahoo.de" class="method-link">jeannette.froehlich@yahoo.de</a>
+                                </div>
                             </div>
-                            <div class="method-content">
-                                <h3 class="method-title">E-Mail</h3>
-                                <p class="method-text">Schreib mir eine E-Mail und ich melde mich bei dir</p>
-                                <a href="mailto:jeannette.froehlich@yahoo.de" class="method-link">jeannette.froehlich@yahoo.de</a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="method-item animate-fadeInRight" style="animation-delay: 0.3s">
+                                <div class="method-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3 class="method-title">WhatsApp</h3>
+                                    <p class="method-text">Für schnelle Anfragen bin ich auch per WhatsApp erreichbar</p>
+                                    <a href="https://wa.me/4960319648368" class="method-link">06031-9648368</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="method-item">
-                            <div class="method-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div class="method-content">
-                                <h3 class="method-title">WhatsApp</h3>
-                                <p class="method-text">Für schnelle Anfragen bin ich auch per WhatsApp erreichbar</p>
-                                <a href="https://wa.me/4960319648368" class="method-link">06031-9648368</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="method-item">
-                            <div class="method-icon">
-                                <i class="fab fa-instagram"></i>
-                            </div>
-                            <div class="method-content">
-                                <h3 class="method-title">Instagram</h3>
-                                
-                                <a href="https://www.instagram.com/zeit_fuer_entfaltung/" target="_blank" class="method-link d-block mb-2">@@zeit_fuer_entfaltung</a>
-                                <a href="https://www.instagram.com/zeit_fuer_oeleliebe/" target="_blank" class="method-link d-block">@@zeit_fuer_oeleliebe</a>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="method-item animate-fadeInLeft" style="animation-delay: 0.5s">
+                                <div class="method-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3 class="method-title">Instagram</h3>
+                                    <a href="https://www.instagram.com/zeit_fuer_entfaltung/" target="_blank" class="method-link d-block mb-2">@@zeit_fuer_entfaltung</a>
+                                    <a href="https://www.instagram.com/zeit_fuer_oeleliebe/" target="_blank" class="method-link d-block">@@zeit_fuer_oeleliebe</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="method-item">
-                            <div class="method-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="method-content">
-                                <h3 class="method-title">Standort</h3>
-                                <p class="method-text">Wetteraukreis, Hessen</p>
-                                <p class="method-text">Termine nach Vereinbarung</p>
+                        <div class="col-md-6">
+                            <div class="method-item animate-fadeInRight" style="animation-delay: 0.5s">
+                                <div class="method-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3 class="method-title">Standort</h3>
+                                    <p class="method-text">Wetteraukreis, Hessen</p>
+                                    <p class="method-text">Termine nach Vereinbarung</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -345,12 +70,255 @@
             </div>
         </div>
     </section>
-
-    
 </div>
 
-@code {
- 
-
+<style>
+    /* Kontakt Page Styles - Updated to match theme.css */
     
+    /* Hero Section */
+    .kontakt-hero {
+        background-color: var(--light-green);
+    }
+    
+    .kontakt-hero .hero-background {
+        background-image: 
+            radial-gradient(circle at 30% 40%, rgba(131, 167, 143, 0.2) 0%, transparent 30%),
+            radial-gradient(circle at 70% 60%, rgba(131, 167, 143, 0.2) 0%, transparent 30%);
+    }
+    
+    /* Contact Card */
+    .contact-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    /* Contact Methods */
+    .kontakt-methods {
+        margin-top: var(--space-md);
+    }
+    
+    .method-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--space-md);
+        padding: var(--space-md);
+        background-color: var(--very-light-green);
+        border-radius: var(--radius-md);
+        transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    }
+    
+    .method-item:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        background-color: var(--light-green);
+    }
+    
+    .method-icon {
+        flex: 0 0 60px;
+        height: 60px;
+        background-color: var(--primary-green);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: var(--space-md);
+        color: white;
+        font-size: 1.5rem;
+        box-shadow: var(--shadow-sm);
+    }
+    
+    .method-content {
+        flex: 1;
+    }
+    
+    .method-title {
+        font-family: var(--heading-font);
+        font-size: 1.5rem;
+        color: var(--primary-green);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .method-text {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 0.5rem;
+        color: var(--corduroy);
+    }
+    
+    .method-link {
+        color: var(--accent-green);
+        font-weight: 500;
+        text-decoration: none;
+        transition: color var(--transition-fast);
+    }
+    
+    .method-link:hover {
+        color: var(--primary-green);
+    }
+    
+    /* Form Styles */
+    .form-section {
+        background-color: var(--very-light-green);
+        padding: var(--space-lg) 0;
+    }
+    
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: var(--space-lg);
+        background-color: white;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    .form-title {
+        font-family: var(--heading-font);
+        font-size: 2.2rem;
+        color: var(--primary-green);
+        text-align: center;
+        margin-bottom: var(--space-md);
+        font-weight: 600;
+    }
+    
+    .form-group {
+        margin-bottom: var(--space-md);
+    }
+    
+    .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--corduroy);
+        font-weight: 500;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid var(--light-green);
+        border-radius: var(--radius-md);
+        background-color: var(--very-light-green);
+        transition: all var(--transition-fast);
+    }
+    
+    .form-control:focus {
+        outline: none;
+        border-color: var(--secondary-green);
+        background-color: white;
+        box-shadow: 0 0 0 3px rgba(131, 167, 143, 0.2);
+    }
+    
+    .form-control.textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+    
+    .form-button {
+        display: inline-block;
+        background-color: var(--primary-green);
+        color: white;
+        padding: 0.8rem 2.5rem;
+        border: none;
+        border-radius: var(--radius-rounded);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all var(--transition-medium);
+        margin-top: var(--space-sm);
+        box-shadow: var(--shadow-sm);
+    }
+    
+    .form-button:hover {
+        background-color: var(--accent-green);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .form-button:disabled {
+        background-color: var(--secondary-green);
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    .form-status {
+        margin-top: var(--space-md);
+        padding: var(--space-sm);
+        border-radius: var(--radius-md);
+        text-align: center;
+    }
+    
+    .form-status.success {
+        background-color: rgba(40, 167, 69, 0.1);
+        border: 1px solid rgba(40, 167, 69, 0.2);
+        color: #28a745;
+    }
+    
+    .form-status.error {
+        background-color: rgba(220, 53, 69, 0.1);
+        border: 1px solid rgba(220, 53, 69, 0.2);
+        color: #dc3545;
+    }
+    
+    /* Responsive Adjustments */
+    @@media (max-width: 992px) {
+        .contact-card {
+            padding: var(--space-md);
+        }
+        
+        .method-item {
+            padding: var(--space-sm);
+        }
+        
+        .method-icon {
+            flex: 0 0 50px;
+            height: 50px;
+            margin-right: var(--space-sm);
+        }
+    }
+    
+    @@media (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+        
+        .hero-tagline {
+            font-size: 1.3rem;
+        }
+        
+        .section-heading {
+            font-size: 1.8rem;
+        }
+        
+        .method-title {
+            font-size: 1.3rem;
+        }
+        
+        .form-title {
+            font-size: 1.8rem;
+        }
+    }
+    
+    @@media (max-width: 576px) {
+        .contact-card {
+            padding: var(--space-sm);
+        }
+        
+        .method-item {
+            flex-direction: column;
+            text-align: center;
+            padding: var(--space-md) var(--space-sm);
+        }
+        
+        .method-icon {
+            margin-right: 0;
+            margin-bottom: var(--space-sm);
+        }
+    }
+</style>
+
+@code {
+    // Component code here
 }

@@ -1,328 +1,254 @@
 ﻿@page "/"
+@using Microsoft.AspNetCore.Components.Web
 
-<style>
-    /* Enhanced Hero Section */
-    .hero-section {
-        position: relative;
-        min-height: 60vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 5rem 0;
-        background-color: #f8f7f5;
-        overflow: hidden;
-    }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.1) 0%, rgba(112, 97, 87, 0.05) 100%);
-            z-index: 1;
-        }
-
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        animation: fadeInUp 1.2s ease-out forwards; /* Added 'forwards' to maintain final state */
-    }
-
-    .hero-image {
-        max-width: 80%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 15px 40px rgba(112, 97, 87, 0.15);
-        transition: all 0.5s ease;
-        display: block; /* Added to ensure the image stays visible */
-    }
-
-        .hero-image:hover {
-            transform: scale(1.02) translateY(-5px);
-            box-shadow: 0 20px 50px rgba(112, 97, 87, 0.2);
-        }
-
-    /* Enhanced Welcome Section */
-    .welcome-section {
-        padding: 6rem 0;
-        background-color: #fff;
-        position: relative;
-    }
-
-        .welcome-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b0b1a8' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-            z-index: 0;
-        }
-
-    .welcome-text {
-        font-size: 1.15rem;
-        line-height: 1.8;
-        max-width: 850px;
-        margin: 0 auto;
-        padding: 3rem;
-        background-color: rgba(255, 255, 255, 0.95);
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
-        position: relative;
-        z-index: 1;
-        animation: fadeIn 1.5s ease forwards; /* Added 'forwards' to maintain final state */
-    }
-
-    .welcome-heading {
-        font-size: 2.4rem;
-        margin-bottom: 2rem;
-        color: var(--taupe-color);
-        text-align: center;
-        font-weight: 500;
-        position: relative;
-    }
-
-        .welcome-heading::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
-            background-color: var(--bud-color);
-        }
-
-    .welcome-quote {
-        margin: 2.5rem 0;
-        padding: 2rem;
-        border-left: 4px solid var(--bud-color);
-        background-color: rgba(176, 177, 168, 0.08);
-        border-radius: 0 12px 12px 0;
-        position: relative;
-    }
-
-        .welcome-quote::before {
-            content: '"';
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            font-size: 4rem;
-            color: var(--bud-color);
-            opacity: 0.3;
-            font-family: 'Georgia', serif;
-        }
-
-        .welcome-quote p {
-            font-size: 1.8rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            font-style: italic;
-            margin: 0;
-            color: var(--taupe-color);
-            line-height: 1.4;
-            position: relative;
-            z-index: 1;
-        }
-
-    .mission-statement {
-        font-size: 1.25rem;
-        color: var(--corduroy-color);
-        margin-bottom: 2rem;
-        font-weight: 400;
-        padding: 0 1rem;
-        border-bottom: 1px solid rgba(176, 177, 168, 0.2);
-        padding-bottom: 2rem;
-    }
-
-    .welcome-text p {
-        margin-bottom: 1.8rem;
-        font-weight: 300;
-    }
-
-    .cta-container {
-        text-align: center;
-        margin-top: 3rem;
-    }
-
-    .cta-button {
-        display: inline-block;
-        padding: 14px 32px;
-        background-color: var(--corduroy-color);
-        color: white;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 1.1rem;
-        letter-spacing: 0.5px;
-        transition: all 0.4s ease;
-        box-shadow: 0 6px 15px rgba(90, 94, 92, 0.2);
-        position: relative;
-        overflow: hidden;
-    }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.6s ease;
-        }
-
-        .cta-button:hover {
-            background-color: var(--taupe-color);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(90, 94, 92, 0.3);
-            color: white;
-            text-decoration: none;
-        }
-
-            .cta-button:hover::before {
-                left: 100%;
-            }
-
-    /* Animations */
-    @@keyframes fadeIn {
-        from
-
-    {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-
-    }
-
-    @@keyframes fadeInUp {
-        from
-
-    {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    }
-
-    /* Responsive Adjustments */
-    @@media (max-width: 992px) {
-        .hero-section
-
-    {
-        min-height: 50vh;
-        padding: 4rem 0;
-    }
-
-    .welcome-text {
-        padding: 2.5rem;
-    }
-
-    }
-
-    @@media (max-width: 768px) {
-        .hero-section
-
-    {
-        min-height: 40vh;
-    }
-
-    .hero-image {
-        max-width: 90%;
-    }
-
-    .welcome-heading {
-        font-size: 2rem;
-    }
-
-    .welcome-quote p {
-        font-size: 1.6rem;
-    }
-
-    .welcome-text {
-        padding: 2rem;
-    }
-
-    }
-
-    @@media (max-width: 576px) {
-        .hero-section
-
-    {
-        min-height: 30vh;
-        padding: 3rem 0;
-    }
-
-    .welcome-heading {
-        font-size: 1.8rem;
-    }
-
-    .welcome-quote {
-        padding: 1.5rem;
-        margin: 2rem 0;
-    }
-
-        .welcome-quote p {
-            font-size: 1.4rem;
-        }
-
-    .mission-statement {
-        font-size: 1.15rem;
-    }
-
-    .welcome-text {
-        padding: 1.5rem;
-    }
-
-    .cta-button {
-        padding: 12px 28px;
-        font-size: 1rem;
-    }
-
-    }
-
-    /* Ensure CSS variables are defined if not elsewhere */
-    :root {
-        --taupe-color: #706157;
-        --corduroy-color: #5a5e5c;
-        --bud-color: #b0b1a8;
-    }
-</style>
+<PageTitle>Zeit für Entfaltung - Persönliche Begleitung für mehr Lebensfreude</PageTitle>
 
 <div class="hero-section">
-    <div class="hero-content">
-        <img src="images/Logo-e7548854-1920w.webp" alt="Zeit für Entfaltung" class="hero-image mb-4" />
+    <div class="hero-background"></div>
+    <div class="hero-content container">
+        <div class="logo-container">
+            <img src="images/Logo-e7548854-1920w.webp" alt="Zeit für Entfaltung" class="hero-logo animate-float" />
+        </div>
+        <h1 class="animate-fadeInUp" style="animation-delay: 0.3s">Zeit für Entfaltung</h1>
+        <p class="hero-tagline animate-fadeInUp" style="animation-delay: 0.5s">Entdecke dein wahres Potenzial</p>
+    </div>
+    <div class="hero-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ffffff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,208C384,203,480,181,576,181.3C672,181,768,203,864,218.7C960,235,1056,245,1152,234.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
     </div>
 </div>
 
-<section class="welcome-section">
+<section class="welcome-section section">
     <div class="container">
-        <div class="welcome-text">
+        <div class="welcome-card animate-scaleIn">
             <h2 class="welcome-heading">Herzlich Willkommen bei Zeit für Entfaltung</h2>
+            
             <div class="welcome-quote">
                 <p>Ich freue mich sehr, dass du hier bist.</p>
             </div>
-            <p class="mission-statement">Mein Herzensanliegen ist es, Menschen wie dich auf ihrem persönlichen Weg zu begleiten. Gemeinsam entdecken wir dein wahres Potenzial und schaffen Raum für mehr Lebensfreude und Gelassenheit.</p>
-            <p>Auf den folgenden Seiten findest du mehr über meine Arbeit und die verschiedenen Wege, wie ich dich auf deinem individuellen Weg unterstützen kann.</p>
+            
+            <p class="main-text">Mein Herzensanliegen ist es, Menschen wie dich auf ihrem persönlichen Weg zu begleiten. Gemeinsam entdecken wir dein wahres Potenzial und schaffen Raum für mehr Lebensfreude und Gelassenheit.</p>
+            
+            <p class="main-text">Auf den folgenden Seiten findest du mehr über meine Arbeit und die verschiedenen Wege, wie ich dich auf deinem individuellen Weg unterstützen kann.</p>
+            
             <div class="cta-container">
-                <a href="kontakt" class="cta-button">Kontakt aufnehmen</a>
+                <a href="kontakt" class="btn">Kontakt aufnehmen</a>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    /* Import our theme CSS variables using link tag instead */
+    /* CSS variables will be imported via the link tag */
+    
+    /* Hero Section */
+    .hero-section {
+        position: relative;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: var(--light-green);
+        padding: 0;
+    }
+    
+    .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(131, 167, 143, 0.2) 0%, transparent 30%),
+            radial-gradient(circle at 80% 70%, rgba(131, 167, 143, 0.2) 0%, transparent 30%);
+        opacity: 0.8;
+        z-index: 1;
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: var(--space-xl) 0;
+    }
+    
+    .logo-container {
+        margin-bottom: var(--space-lg);
+    }
+    
+    .hero-logo {
+        max-width: 300px;
+        height: auto;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition-medium);
+    }
+    
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .hero-section h1 {
+        font-size: 3.5rem;
+        color: var(--primary-green);
+        margin-bottom: var(--space-sm);
+        font-weight: 700;
+    }
+    
+    .hero-tagline {
+        font-size: 1.5rem;
+        color: var(--accent-green);
+        margin-bottom: 95px;
+        font-weight: 300;
+        font-family: var(--quote-font);
+        font-style: italic;
+    }
+    
+    .hero-wave {
+        position: absolute;
+        bottom: -2px; /* Ensure wave connects properly with section below */
+        left: 0;
+        width: 100%;
+        line-height: 0;
+        z-index: 3;
+    }
+    
+    /* Welcome Section */
+    .welcome-section {
+        position: relative;
+        background-color: white;
+    }
+    
+    .welcome-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        padding: var(--space-lg);
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    .welcome-heading {
+        text-align: center;
+        margin-bottom: var(--space-md);
+        color: var(--primary-green);
+        font-weight: 600;
+    }
+    
+    .welcome-quote {
+        background-color: var(--very-light-green);
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+        margin-bottom: var(--space-md);
+        position: relative;
+        text-align: center;
+    }
+    
+    .welcome-quote p {
+        font-family: var(--quote-font);
+        font-size: 1.5rem;
+        color: var(--primary-green);
+        font-style: italic;
+        margin: 0;
+    }
+    
+    .main-text {
+        font-size: 1.15rem;
+        line-height: 1.7;
+        margin-bottom: var(--space-md);
+        color: var(--corduroy);
+    }
+    
+    .cta-container {
+        text-align: center;
+        margin-top: var(--space-lg);
+    }
+    
+    /* Animation Classes */
+    .animate-fadeIn {
+        opacity: 0;
+        animation: fadeIn var(--transition-slow) forwards;
+    }
+    
+    .animate-fadeInUp {
+        opacity: 0;
+        animation: fadeInUp var(--transition-slow) forwards;
+    }
+    
+    .animate-scaleIn {
+        opacity: 0;
+        animation: scaleIn var(--transition-slow) forwards;
+        animation-delay: 0.3s;
+    }
+    
+    /* Responsive Adjustments */
+    @@media (max-width: 992px) {
+        .hero-section {
+            min-height: 75vh;
+        }
+        
+        .hero-section h1 {
+            font-size: 3rem;
+        }
+        
+        .hero-tagline {
+            font-size: 1.3rem;
+        }
+    }
+    
+    @@media (max-width: 768px) {
+        .hero-section {
+            min-height: 60vh;
+        }
+        
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+        
+        .welcome-quote p {
+            font-size: 1.4rem;
+        }
+        
+        .welcome-card {
+            padding: var(--space-md);
+        }
+        
+        .main-text {
+            font-size: 1.1rem;
+        }
+    }
+    
+    @@media (max-width: 576px) {
+        .hero-logo {
+            max-width: 200px;
+        }
+        
+        .hero-section h1 {
+            font-size: 2rem;
+        }
+        
+        .hero-tagline {
+            font-size: 1.1rem;
+        }
+        
+        .welcome-quote p {
+            font-size: 1.3rem;
+        }
+        
+        .welcome-heading {
+            font-size: 1.8rem;
+        }
+        
+        .main-text {
+            font-size: 1.05rem;
+        }
+    }
+</style>
 
 @code {
     // You can add any required code here

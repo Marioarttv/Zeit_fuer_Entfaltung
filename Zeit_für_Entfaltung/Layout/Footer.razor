@@ -1,6 +1,11 @@
 ﻿@using System
 
 <footer class="footer">
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ffffff" fill-opacity="1" d="M0,288L48,272C96,256,192,224,288,213.3C384,203,480,213,576,229.3C672,245,768,267,864,261.3C960,256,1056,224,1152,218.7C1248,213,1344,235,1392,245.3L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
+        </svg>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-6 footer-contact">
@@ -11,15 +16,17 @@
             </div>
             <div class="col-md-6 text-md-end d-flex align-items-center justify-content-md-end justify-content-center">
                 <div class="social-links">
-                    <a href="https://www.instagram.com/zeit_fuer_entfaltung/" target="_blank" aria-label="Instagram">
+                    <a href="https://www.instagram.com/zeit_fuer_entfaltung/" target="_blank" aria-label="Instagram" class="animate-hover">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom mt-4">
-            <a href="impressum">Impressum</a>
-            <a href="datenschutz" class="ms-3">Datenschutz</a>
+        <div class="footer-bottom">
+            <div class="footer-nav">
+                <a href="impressum" class="animate-hover">Impressum</a>
+                <a href="datenschutz" class="animate-hover">Datenschutz</a>
+            </div>
             <p>&copy; @DateTime.Now.Year - Zeit für Entfaltung</p>
         </div>
     </div>
@@ -27,80 +34,117 @@
 
 <style>
     .footer {
-        background-color: #f5f4f1;
-        padding: 3rem 0 1.5rem;
-        margin-top: 2rem;
-        color: var(--taupe-color);
+        background-color: var(--light-green);
+        padding: 5rem 0 1.5rem;
+        
+        color: var(--corduroy);
+        position: relative;
     }
 
-        .footer h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--corduroy-color);
-            margin-bottom: 1rem;
-        }
+    .footer-wave {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        line-height: 0;
+        z-index: 1;
+    }
 
-        .footer p {
-            margin-bottom: 0.5rem;
-        }
+    .footer .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .footer h4 {
+        font-family: var(--quote-font);
+        font-size: 1.8rem;
+        color: var(--primary-green);
+        margin-bottom: var(--space-sm);
+    }
+
+    .footer p {
+        margin-bottom: 0.5rem;
+    }
 
     .social-links {
         display: flex;
         gap: 1.5rem;
     }
 
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: var(--bud-color);
-            color: white;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
+    .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: var(--secondary-green);
+        color: white;
+        border-radius: 50%;
+        transition: var(--transition-medium);
+    }
 
-            .social-links a:hover {
-                background-color: var(--corduroy-color);
-                transform: translateY(-3px);
-            }
+    .social-links a:hover {
+        background-color: var(--primary-green);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-sm);
+    }
 
-        .social-links i {
-            font-size: 1.2rem;
-        }
+    .social-links i {
+        font-size: 1.2rem;
+    }
 
     .footer-bottom {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(112, 97, 87, 0.1);
+        margin-top: var(--space-lg);
+        padding-top: var(--space-md);
+        border-top: 1px solid rgba(90, 132, 110, 0.15);
         text-align: center;
         font-size: 0.9rem;
     }
 
-        .footer-bottom a {
-            color: var(--taupe-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+    .footer-nav {
+        display: flex;
+        justify-content: center;
+        gap: var(--space-md);
+        margin-bottom: var(--space-sm);
+    }
 
-            .footer-bottom a:hover {
-                color: var(--corduroy-color);
-            }
+    .footer-bottom a {
+        color: var(--primary-green);
+        text-decoration: none;
+        transition: var(--transition-fast);
+    }
 
-        .footer-bottom p {
-            margin-top: 1rem;
-            opacity: 0.8;
-        }
+    .footer-bottom a:hover {
+        color: var(--accent-green);
+    }
+
+    .footer-bottom p {
+        margin-top: var(--space-sm);
+        color: var(--corduroy);
+        opacity: 0.8;
+    }
+
+    .animate-hover {
+        transition: var(--transition-medium);
+    }
+
+    .animate-hover:hover {
+        transform: translateY(-3px);
+    }
 
     @@media (max-width: 767px) {
         .footer-contact {
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-nav {
+            flex-direction: column;
+            gap: var(--space-sm);
         }
     }
 </style>
 
 @code {
-    // No code needed for this component unless you want to add logic
+    // No code needed for this component
 }

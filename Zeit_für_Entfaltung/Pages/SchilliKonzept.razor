@@ -3,366 +3,44 @@
 
 <PageTitle>Das Schilli Konzept - Zeit für Entfaltung</PageTitle>
 
-<style>
-    /* Schilli Konzept Page Styles */
-    .schilli-page {
-        font-family: 'Montserrat', sans-serif;
-        color: #4e4636;
-    }
-
-    .schilli-hero {
-        text-align: center;
-        padding: 3rem 0;
-        background-color: #fff;
-    }
-
-        .schilli-hero img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
-            margin-bottom: 2rem;
-        }
-
-    .intro-section {
-        padding: 4rem 0;
-        background-color: #f5f4f1;
-    }
-
-    .intro-text {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    }
-
-        .intro-text p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 1.2rem;
-        }
-
-            .intro-text p:first-of-type {
-                font-size: 1.2rem;
-                font-weight: 500;
-                color: #706157;
-            }
-
-    .avatar-container {
-        text-align: center;
-        margin: 2rem 0;
-    }
-
-    .avatar-image {
-        max-width: 280px;
-        height: auto;
-        margin: 0 auto;
-        display: block;
-        filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
-    }
-
-    .offerings-section {
-        padding: 5rem 0;
-        background-color: #fff;
-    }
-
-    .offerings-heading {
-        text-align: center;
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.5rem;
-        color: #4e4636;
-        margin-bottom: 3rem;
-    }
-
-    .slides-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 2rem;
-        margin-bottom: 3rem;
-    }
-
-    .slide-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .offerings-details {
-        max-width: 900px;
-        margin: 0 auto 3rem;
-        padding: 2rem;
-        background-color: #f5f4f1;
-        border-radius: 10px;
-        position: relative;
-    }
-
-    .offerings-details-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 2rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
-
-    .offerings-list {
-        margin-bottom: 2rem;
-    }
-
-        .offerings-list h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: #4e4636;
-            margin-bottom: 1.5rem;
-        }
-
-        .offerings-list ul {
-            list-style: none;
-            padding-left: 0;
-            margin-bottom: 2rem;
-        }
-
-        .offerings-list li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-
-            .offerings-list li::before {
-                content: '•';
-                position: absolute;
-                left: 10px;
-                color: #b0b1a8;
-                font-size: 1.2rem;
-            }
-
-    .themes-container {
-        margin-top: 3rem;
-    }
-
-    .themes-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
-        color: #4e4636;
-        margin-bottom: 1.5rem;
-    }
-
-    .themes-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-    }
-
-    .theme-item {
-        background-color: #fff;
-        padding: 1rem;
-        border-radius: 6px;
-        text-align: center;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-        .theme-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-    .flexible-note {
-        margin-top: 2rem;
-        padding: 1.5rem;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-        font-style: italic;
-    }
-
-    .support-section {
-        padding: 1rem 2rem;
-        background-color: #fff;
-        border-radius: 8px;
-        margin-top: 2rem;
-    }
-
-        .support-section h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: #4e4636;
-            margin-bottom: 1.5rem;
-        }
-
-        .support-section ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .support-section li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-
-            .support-section li::before {
-                content: '→';
-                position: absolute;
-                left: 0;
-                color: #706157;
-            }
-
-    .pricing-section {
-        padding: 4rem 0;
-        background-image: linear-gradient(135deg, #b0b1a8 0%, #706157 100%);
-        color: white;
-        text-align: center;
-    }
-
-    .pricing-container {
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 2rem;
-        background-color: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    }
-
-    .pricing-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .pricing-amount {
-        font-size: 3.5rem;
-        font-weight: 700;
-        margin: 1.5rem 0;
-        color: #fff;
-        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .pricing-note {
-        font-style: italic;
-        margin: 1.5rem 0;
-        font-size: 1.1rem;
-    }
-
-    .closing {
-        margin-top: 2rem;
-    }
-
-    .contact-button {
-        display: inline-block;
-        padding: 1rem 2.5rem;
-        background-color: white;
-        color: #706157;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        margin-top: 2rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-        .contact-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            background-color: #f5f4f1;
-        }
-
-        .contact-button i {
-            margin-right: 0.5rem;
-        }
-
-    @@media (max-width: 992px) {
-        .themes-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @@media (max-width: 768px) {
-        .offerings-heading {
-            font-size: 2rem;
-        }
-
-        .pricing-amount {
-            font-size: 2.8rem;
-        }
-
-        .intro-text {
-            padding: 1.5rem;
-        }
-    }
-
-    @@media (max-width: 576px) {
-        .themes-grid {
-            grid-template-columns: 1fr;
-        }
-
-        .offerings-heading {
-            font-size: 1.8rem;
-        }
-
-        .pricing-amount {
-            font-size: 2.2rem;
-        }
-
-        .pricing-container {
-            padding: 1.5rem;
-        }
-    }
-</style>
-
 <div class="schilli-page">
-    <!-- Hero Section -->
-    <section class="schilli-hero">
-        <div class="container">
-            <img src="images/SchilliKonzept.png" alt="Schilli Schildkröte Konzept" class="img-fluid" />
-        </div>
-    </section>
-
     <!-- Introduction Section -->
-    <section class="intro-section">
+    <section class="intro-section section">
         <div class="container">
-            <div class="intro-text">
-                <p>Hey, ich bin Schilli. Ich stehe fest an der Seite der Kinder, um sie auf ihrer Reise des Persönlichkeitswachstums zu unterstützen. In meinem farbenfrohen Panzer spiegelt sich die bunte Vielfalt wider, die jeden Einzelnen so einzigartig macht.</p>
+            <div class="intro-card animate-scaleIn">
+                <p class="intro-highlight">Hey, ich bin Schilli. Ich stehe fest an der Seite der Kinder, um sie auf ihrer Reise des Persönlichkeitswachstums zu unterstützen. In meinem farbenfrohen Panzer spiegelt sich die bunte Vielfalt wider, die jeden Einzelnen so einzigartig macht.</p>
 
-                <p>Gemeinsam erforschen wir die Tiefe ihrer Persönlichkeiten, damit sie ihre individuellen Stärken erkennen und schätzen lernen.</p>
+                <p class="main-text">Gemeinsam erforschen wir die Tiefe ihrer Persönlichkeiten, damit sie ihre individuellen Stärken erkennen und schätzen lernen.</p>
 
-                <p>Mein Ziel ist es, ihnen zu vermitteln, dass ihre Einzigartigkeit eine Quelle der Kraft ist, auf die sie stolz sein können. Wir formen gemeinsam eine positive Selbstwahrnehmung, damit sie mit Zuversicht und Selbstbewusstsein den Weg zu ihrer besten Version gehen können.</p>
+                <p class="main-text">Mein Ziel ist es, ihnen zu vermitteln, dass ihre Einzigartigkeit eine Quelle der Kraft ist, auf die sie stolz sein können. Wir formen gemeinsam eine positive Selbstwahrnehmung, damit sie mit Zuversicht und Selbstbewusstsein den Weg zu ihrer besten Version gehen können.</p>
 
                 <div class="avatar-container">
-                    <img src="images/SchildiAvatar.png" alt="Schilli Avatar" class="avatar-image img-fluid" />
+                    <img src="images/SchildiAvatar.png" alt="Schilli Avatar" class="avatar-image animate-float" />
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Offerings Section -->
-    <section class="offerings-section">
+    <section class="offerings-section section section-light">
         <div class="container">
-            <h2 class="offerings-heading">Was dich erwartet</h2>
+            <h2 class="section-heading text-center animate-fadeInUp">Was dich erwartet</h2>
+            <div class="divider"></div>
 
             <div class="slides-container">
-                <div class="slide-item col-md-5">
+                <div class="slide-item col-md-5 animate-fadeInLeft" style="animation-delay: 0.3s">
                     <img src="images/Schildislide1.webp" alt="Schilli Konzept Slide 1" class="slide-image img-fluid" />
                 </div>
-                <div class="slide-item col-md-5">
+                <div class="slide-item col-md-5 animate-fadeInRight" style="animation-delay: 0.5s">
                     <img src="images/SchildiSlide2.webp" alt="Schilli Konzept Slide 2" class="slide-image img-fluid" />
                 </div>
             </div>
 
-            <div class="offerings-details">
+            <div class="offerings-card animate-scaleIn" style="animation-delay: 0.7s">
                 <img src="images/WasDichErwartet.webp" alt="Was Dich Erwartet Details" class="offerings-details-image" />
 
                 <div class="offerings-list">
-                    <p>Mit dem Konzept und dem Starterpaket kannst du direkt starten und Kinderstärkerkurse anbieten. Ob in Schule, Kitas, freie Kurse oder Eltern - Kind-Format ist dir ganz freigestellt.</p>
+                    <p class="main-text">Mit dem Konzept und dem Starterpaket kannst du direkt starten und Kinderstärkerkurse anbieten. Ob in Schule, Kitas, freie Kurse oder Eltern - Kind-Format ist dir ganz freigestellt.</p>
 
                     <h3>Du erhältst:</h3>
                     <ul>
@@ -377,7 +55,7 @@
                     </ul>
 
                     <div class="themes-container">
-                        <h3 class="themes-title">Die Themen sind:</h3>
+                        <h3>Die Themen sind:</h3>
                         <div class="themes-grid">
                             <div class="theme-item">Vielfalt</div>
                             <div class="theme-item">Selbstliebe</div>
@@ -395,9 +73,9 @@
                         <p>Du kannst dir die Stunden aber auch so zusammen stellen, wie es deine Kinder zur Zeit am besten abholt.</p>
                     </div>
 
-                    <div class="support-section">
+                    <div class="support-card">
                         <h3>Begleitung und Community</h3>
-                        <ul>
+                        <ul class="support-list">
                             <li>Begleitet wirst du: im 1:1 von mir</li>
                             <li>Bist Teil der WhatsApp Schilli Kinderstärker Community</li>
                             <li>Hast die Möglichkeit bei Austausch Zoom Abenden dabei zu sein</li>
@@ -409,13 +87,14 @@
     </section>
 
    @*  <!-- Pricing Section -->
-    <section class="pricing-section">
+    <section class="pricing-section section">
         <div class="container">
-            <div class="pricing-container">
-                <h2 class="pricing-title">Das Gesamtpaket erhältst du für</h2>
+            <div class="pricing-card animate-scaleIn">
+                <h2 class="section-heading text-center">Das Gesamtpaket erhältst du für</h2>
+                <div class="divider"></div>
                 <div class="pricing-amount">799,00 €</div>
 
-                <div class="pricing-note">
+                <div class="pricing-note quote text-center">
                     <p>Wenn du noch mehr Infos benötigst, können wir gerne einen Telefontermin vereinbaren.</p>
                 </div>
 
@@ -423,13 +102,298 @@
                     <p>Herzliche Grüße<br />Jeannette</p>
                 </div>
 
-                <a href="https://wa.me/4960319648368?text=Hallo%2C%20ich%20habe%20Interesse%20an%20dem%20Schilli%20Schildkr%C3%B6te%20Kinderst%C3%A4rkerkonzepts.%20Kann%20ich%20bitte%20weitere%20Informationen%20erhalten%3F" class="contact-button">
-                    <i class="fab fa-whatsapp"></i> Per WhatsApp kontaktieren
-                </a>
+                <div class="cta-container">
+                    <a href="https://wa.me/4960319648368?text=Hallo%2C%20ich%20habe%20Interesse%20an%20dem%20Schilli%20Schildkr%C3%B6te%20Kinderst%C3%A4rkerkonzepts.%20Kann%20ich%20bitte%20weitere%20Informationen%20erhalten%3F" class="btn">
+                        <i class="fab fa-whatsapp"></i> Per WhatsApp kontaktieren
+                    </a>
+                </div>
             </div>
         </div>
     </section> *@
 </div>
+
+<style>
+    /* Schilli Konzept Page Styles - Updated to match theme.css */
+    
+    /* Hero Section */
+    .schilli-hero {
+        background-color: var(--light-green);
+    }
+    
+    .schilli-hero .hero-background {
+        background-image: 
+            radial-gradient(circle at 30% 40%, rgba(131, 167, 143, 0.2) 0%, transparent 30%),
+            radial-gradient(circle at 70% 60%, rgba(131, 167, 143, 0.2) 0%, transparent 30%);
+    }
+    
+    .schilli-logo {
+        max-width: 120px;
+        height: auto;
+        margin-bottom: var(--space-md);
+        box-shadow: var(--shadow-md);
+        border-radius: var(--radius-md);
+        transition: var(--transition-medium);
+    }
+    
+    /* Introduction Section */
+    .intro-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        max-width: 900px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    .intro-highlight {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--primary-green);
+        margin-bottom: var(--space-md);
+        line-height: 1.7;
+    }
+    
+    .avatar-container {
+        text-align: center;
+        margin: var(--space-md) 0;
+    }
+    
+    .avatar-image {
+        max-width: 280px;
+        height: auto;
+        margin: 0 auto;
+        filter: drop-shadow(0 5px 15px rgba(90, 132, 110, 0.15));
+    }
+    
+    /* Offerings Section */
+    .slides-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--space-md);
+        margin-bottom: var(--space-lg);
+    }
+    
+    .slide-image {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    }
+    
+    .slide-image:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .offerings-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        max-width: 900px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    .offerings-details-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--radius-md);
+        margin-bottom: var(--space-md);
+        box-shadow: var(--shadow-sm);
+    }
+    
+    .offerings-list h3 {
+        color: var(--primary-green);
+        margin-bottom: var(--space-sm);
+        font-family: var(--heading-font);
+        font-weight: 600;
+    }
+    
+    .offerings-list ul {
+        list-style: none;
+        padding-left: 0;
+        margin-bottom: var(--space-md);
+    }
+    
+    .offerings-list li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: var(--space-xs);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: var(--corduroy);
+    }
+    
+    .offerings-list li::before {
+        content: '•';
+        position: absolute;
+        left: 10px;
+        color: var(--secondary-green);
+        font-size: 1.2rem;
+    }
+    
+    .themes-container {
+        margin-top: var(--space-lg);
+    }
+    
+    .themes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-sm);
+        margin-top: var(--space-md);
+    }
+    
+    .theme-item {
+        background-color: var(--very-light-green);
+        padding: var(--space-sm);
+        border-radius: var(--radius-md);
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+        color: var(--primary-green);
+        font-weight: 500;
+    }
+    
+    .theme-item:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        background-color: var(--light-green);
+    }
+    
+    .flexible-note {
+        margin-top: var(--space-md);
+        padding: var(--space-md);
+        background-color: var(--very-light-green);
+        border-radius: var(--radius-md);
+        text-align: center;
+        font-style: italic;
+        color: var(--primary-green);
+    }
+    
+    .support-card {
+        background-color: var(--very-light-green);
+        border-radius: var(--radius-md);
+        padding: var(--space-md);
+        margin-top: var(--space-md);
+        border-left: 4px solid var(--secondary-green);
+    }
+    
+    .support-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    
+    .support-list li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: var(--space-sm);
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: var(--corduroy);
+    }
+    
+    .support-list li::before {
+        content: '→';
+        position: absolute;
+        left: 0;
+        color: var(--secondary-green);
+    }
+    
+    /* Pricing Section */
+    .pricing-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        max-width: 700px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    .pricing-amount {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin: var(--space-md) 0;
+        color: var(--primary-green);
+        text-align: center;
+    }
+    
+    .pricing-note {
+        margin: var(--space-md) 0;
+    }
+    
+    .closing {
+        text-align: center;
+        margin-top: var(--space-md);
+        font-family: var(--quote-font);
+        font-style: italic;
+        color: var(--corduroy);
+    }
+    
+    .cta-container {
+        text-align: center;
+        margin-top: var(--space-md);
+    }
+    
+    /* Responsive Adjustments */
+    @@media (max-width: 992px) {
+        .themes-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .offerings-card,
+        .intro-card,
+        .pricing-card {
+            padding: var(--space-md);
+        }
+    }
+    
+    @@media (max-width: 768px) {
+        .slide-item {
+            max-width: 80%;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .pricing-amount {
+            font-size: 2.8rem;
+        }
+        
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+        
+        .hero-tagline {
+            font-size: 1.3rem;
+        }
+    }
+    
+    @@media (max-width: 576px) {
+        .themes-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .pricing-amount {
+            font-size: 2.2rem;
+        }
+        
+        .slide-item {
+            max-width: 100%;
+        }
+        
+        .offerings-card,
+        .intro-card,
+        .pricing-card {
+            padding: var(--space-sm);
+        }
+        
+        .intro-highlight {
+            font-size: 1.1rem;
+        }
+    }
+</style>
 
 @code {
     // Component code here

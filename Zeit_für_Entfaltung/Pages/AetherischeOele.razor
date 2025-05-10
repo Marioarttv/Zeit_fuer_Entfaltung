@@ -3,362 +3,34 @@
 
 <PageTitle>Ätherische Öle - Zeit für Entfaltung</PageTitle>
 
-<style>
-    /* Ätherische Öle Page Styles */
-    .oils-page {
-        font-family: 'Montserrat', sans-serif;
-        color: #4e4636;
-    }
-
-    .oils-hero {
-        position: relative;
-        min-height: 30vh;
-        background-color: #b0b1a8;
-        background-image: linear-gradient(135deg, rgba(176, 177, 168, 0.8), rgba(112, 97, 87, 0.6));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 4rem 2rem;
-        overflow: hidden;
-        margin-bottom: 3rem;
-    }
-
-        .oils-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z'%3E%3C/path%3E%3C/svg%3E");
-            z-index: 1;
-        }
-
-    .hero-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 3.5rem;
-        color: #fff;
-        text-align: center;
-        margin: 0;
-        position: relative;
-        z-index: 2;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .intro-section {
-        padding: 4rem 0;
-        background-color: #fff;
-    }
-
-    .intro-container {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .intro-image {
-        max-width: 250px;
-        margin-bottom: 2rem;
-        border-radius: 50%;
-        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.15);
-    }
-
-    .intro-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.5rem;
-        color: #4e4636;
-        margin-bottom: 1.5rem;
-        position: relative;
-        display: inline-block;
-    }
-
-        .intro-title:after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background-color: #b0b1a8;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-    .intro-text {
-        font-size: 1.05rem;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-    }
-
-    .oil-benefits-section {
-        padding: 4rem 0;
-        background-color: #f5f4f1;
-    }
-
-    .benefits-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.5rem;
-        color: #4e4636;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-
-    .benefit-card {
-        background-color: #fff;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.1);
-        height: 100%;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(112, 97, 87, 0.15);
-        }
-
-    .benefit-icon {
-        font-size: 2.5rem;
-        color: #706157;
-        margin-bottom: 1rem;
-    }
-
-    .benefit-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.5rem;
-        color: #4e4636;
-        margin-bottom: 1rem;
-    }
-
-    .benefit-text {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    .cta-section {
-        padding: 5rem 0;
-        background-image: linear-gradient(135deg, #b0b1a8 0%, #706157 100%);
-        color: white;
-        text-align: center;
-    }
-
-    .cta-container {
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-    .cta-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .cta-text {
-        font-size: 1.2rem;
-        line-height: 1.7;
-        margin-bottom: 2rem;
-    }
-
-    .cta-button {
-        display: inline-block;
-        padding: 1rem 2.5rem;
-        background-color: white;
-        color: #706157;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            background-color: #f5f4f1;
-        }
-
-    .oil-gallery {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.5rem;
-        margin-top: 3rem;
-    }
-
-    .oil-item {
-        background-color: #fff;
-        padding: 1.5rem;
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        text-align: center;
-        transition: transform 0.3s ease;
-    }
-
-        .oil-item:hover {
-            transform: translateY(-5px);
-        }
-
-    .oil-icon {
-        font-size: 2rem;
-        color: #706157;
-        margin-bottom: 1rem;
-    }
-
-    .oil-name {
-        font-weight: 600;
-        color: #4e4636;
-        margin-bottom: 0.5rem;
-    }
-
-    .oil-property {
-        font-size: 0.9rem;
-        color: #706157;
-    }
-
-    /* Children & Family Sections */
-    .children-section, .family-section {
-        padding: 5rem 0;
-        background-color: #fff;
-    }
-
-    .family-section {
-        background-color: #f5f4f1;
-    }
-
-    .services-container {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-
-    .section-title {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 2.5rem;
-        color: #4e4636;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-
-    .section-divider {
-        width: 80px;
-        height: 3px;
-        background-color: #b0b1a8;
-        margin: 0 auto 3rem;
-    }
-
-    .section-image {
-        width: 100%;
-        border-radius: 8px;
-        box-shadow: 0 10px 30px rgba(112, 97, 87, 0.15);
-        transition: all 0.4s ease;
-    }
-
-    .section-content {
-        padding: 1rem 1rem 1rem 2rem;
-    }
-
-        .section-content p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 1.2rem;
-        }
-
-    .service-details {
-        margin-top: 2rem;
-        padding: 1.5rem;
-        background-color: rgba(176, 177, 168, 0.1);
-        border-radius: 8px;
-    }
-
-    .detail-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.8rem;
-    }
-
-        .detail-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .detail-item i {
-            font-size: 1.2rem;
-            color: #706157;
-            margin-right: 1rem;
-            width: 20px;
-            text-align: center;
-        }
-
-        .detail-item span {
-            font-weight: 500;
-        }
-
-    /* Responsive adjustments */
-    @@media (max-width: 992px) {
-        .oil-gallery {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-        .section-content {
-            padding: 1rem 0;
-            margin-top: 1.5rem;
-        }
-    }
-
-    @@media (max-width: 768px) {
-        .hero-title {
-            font-size: 2.8rem;
-        }
-
-        .intro-title, .benefits-title, .cta-title, .section-title {
-            font-size: 2.2rem;
-        }
-
-        .oil-gallery {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @@media (max-width: 576px) {
-        .hero-title {
-            font-size: 2.3rem;
-        }
-
-        .intro-title, .benefits-title, .cta-title, .section-title {
-            font-size: 1.8rem;
-        }
-
-        .oil-gallery {
-            grid-template-columns: 1fr;
-        }
-    }
-</style>
 
 <div class="oils-page">
-    <!-- Hero Section -->
-    <section class="oils-hero">
-        <h1 class="hero-title">Ätherische Öle</h1>
-    </section>
-
     <!-- Introduction Section -->
-    <section class="intro-section">
+    <section class="intro-section section">
         <div class="container">
-            <div class="intro-container">
-                <img src="/images/placeholder-oil.jpg" alt="Ätherische Öle" class="intro-image" onerror="this.src='/images/Schildi.png'; this.style.borderRadius='0';" />
-                <h2 class="intro-title">Aromaberatung mit Herz – natürlich, individuell & alltagstauglich</h2>
-                <p class="intro-text">
+            <div class="intro-card animate-scaleIn">
+                <div class="intro-image-container">
+                    <img src="/images/placeholder-oil.jpg" alt="Ätherische Öle" class="intro-image" onerror="this.src='/images/Schildi.png'; this.style.borderRadius='var(--radius-md)';" />
+                </div>
+                <h2 class="section-heading text-center">Aromaberatung mit Herz – natürlich, individuell & alltagstauglich</h2>
+                <div class="divider"></div>
+                
+                <p class="main-text">
                     Als zertifizierte Aromaberaterin arbeite ich mit den reinen ätherischen Ölen von doTERRA – naturreine Essenzen, die uns auf körperlicher, emotionaler und energetischer Ebene begleiten und unterstützen können.
                 </p>
-                <p class="intro-text">
+                <p class="main-text">
                     In meiner ganzheitlichen Beratung stehst du mit deinen individuellen Bedürfnissen im Mittelpunkt. Gemeinsam finden wir heraus, welche Öle dich im Alltag stärken, wie du kleine Rituale etablieren kannst und wie du die Kraft der Natur für mehr Wohlbefinden und innere Balance nutzen kannst.
                 </p>
-                <p class="intro-text">
+                <p class="main-text">
                     Ich begleite Einzelpersonen ebenso wie Familien und zeige Wege auf, wie ätherische Öle ganz praktisch in das tägliche Leben integriert werden können – ob zur Entspannung, zur Unterstützung in stressigen Zeiten, für mehr Fokus oder als liebevolle Begleiter in fordernden Lebensphasen.
                 </p>
-                <p class="intro-text">
+                <p class="main-text">
                     Gerade auch Kinder und Jugendliche können im Alltag, beim Lernen oder in der Schule von bestimmten Düften profitieren. Es gibt inzwischen spannende Studien, die sich mit dem Einfluss ätherischer Öle auf Konzentration, Fokus und das Erleben von Prüfungssituationen beschäftigen.
                 </p>
-                <p class="intro-text">
+                <p class="main-text">
                     Egal, ob du neue Wege der Selbstfürsorge entdecken möchtest, dich nach mehr innerer Ruhe sehnst oder deine Familie ganzheitlich unterstützen willst – ich bin an deiner Seite und begleite dich mit viel Herz, Erfahrung und einem sicheren Gespür für deine Themen.
                 </p>
-                <p class="intro-text">
+                <p class="main-text">
                     Ich freue mich, dich ein Stück auf deinem Weg begleiten zu dürfen.
                 </p>
             </div>
@@ -366,12 +38,14 @@
     </section>
 
     <!-- Benefits Section -->
-    <section class="oil-benefits-section">
+    <section class="oil-benefits-section section section-light">
         <div class="container">
-            <h2 class="benefits-title">Die Kraft der ätherischen Öle</h2>
+            <h2 class="section-heading text-center animate-fadeInUp">Die Kraft der ätherischen Öle</h2>
+            <div class="divider"></div>
+            
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="benefit-card">
+                    <div class="benefit-card animate-fadeInUp" style="animation-delay: 0.3s">
                         <div class="benefit-icon">
                             <i class="fas fa-heart"></i>
                         </div>
@@ -382,7 +56,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="benefit-card">
+                    <div class="benefit-card animate-fadeInUp" style="animation-delay: 0.5s">
                         <div class="benefit-icon">
                             <i class="fas fa-spa"></i>
                         </div>
@@ -393,7 +67,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="benefit-card">
+                    <div class="benefit-card animate-fadeInUp" style="animation-delay: 0.7s">
                         <div class="benefit-icon">
                             <i class="fas fa-users"></i>
                         </div>
@@ -405,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="oil-gallery">
+            <div class="oil-gallery animate-scaleIn" style="animation-delay: 0.9s">
                 <div class="oil-item">
                     <div class="oil-icon">
                         <i class="fas fa-leaf"></i>
@@ -439,25 +113,25 @@
     </section>
 
     <!-- Children Section -->
-    <section class="children-section">
+    <section class="children-section section">
         <div class="container">
-            <div class="services-container">
-                <h2 class="section-title">Aromaberatung für Kinder</h2>
-                <div class="section-divider"></div>
+            <div class="service-card animate-scaleIn">
+                <h2 class="section-heading text-center">Aromaberatung für Kinder</h2>
+                <div class="divider"></div>
 
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0">
-                        <img src="/images/Oilback2.png" alt="Aromaberatung für Kinder" class="section-image" onerror="this.src='/images/placeholder-oil.jpg'; this.style.borderRadius='8px';" />
+                        <img src="/images/Oilback2.png" alt="Aromaberatung für Kinder" class="section-image" onerror="this.src='/images/placeholder-oil.jpg'; this.style.borderRadius='var(--radius-lg)';" />
                     </div>
                     <div class="col-lg-6">
                         <div class="section-content">
-                            <p>
+                            <p class="main-text">
                                 Ätherische Öle können für Kinder in vielen Lebenslagen ein wertvoller Begleiter sein – vom Babyalter über den Kindergarten bis hin zur Pubertät. Gerade wenn es etwas mehr Mut, Selbstvertrauen oder Gelassenheit braucht, kann eine individuell ausgewählte Duftmischung unterstützend wirken.
                             </p>
-                            <p>
+                            <p class="main-text">
                                 Diese natürlichen Essenzen können den Geist beruhigen, Angstgefühle lindern und helfen, Stress abzubauen. Sie können auch anregen, motivieren und das Gedächtnis stärken. Wissenschaftliche Studien belegen, dass 100% naturreine ätherische Öle den Schulalltag unterstützen können – sei es durch Konzentrationssteigerung oder mehr Motivation.
                             </p>
-                            <p>
+                            <p class="main-text">
                                 In meiner Arbeit mit Kindern verbinde ich gerne Fantasiereisen mit der Kraft der ätherischen Öle. So schenke ich den Kleinen einen Moment Abstand vom Alltag und wecke mit Hilfe der Duftmischungen ihr Wohlbefinden oder den "mutigen Löwen" in ihnen. Jedes Kind bekommt seine persönliche Duftmischung als Riechstift oder "Zauber Roll-On" mit nach Hause.
                             </p>
                             <div class="service-details">
@@ -474,25 +148,25 @@
     </section>
 
     <!-- Family Section -->
-    <section class="family-section">
+    <section class="family-section section section-light">
         <div class="container">
-            <div class="services-container">
-                <h2 class="section-title">Aromaberatung für Dich und Deine Familie</h2>
-                <div class="section-divider"></div>
+            <div class="service-card animate-scaleIn">
+                <h2 class="section-heading text-center">Aromaberatung für Dich und Deine Familie</h2>
+                <div class="divider"></div>
 
                 <div class="row align-items-center flex-lg-row-reverse">
                     <div class="col-lg-6 mb-4 mb-lg-0">
-                        <img src="/images/Oilback.png" alt="Aromaberatung für Familien" class="section-image" onerror="this.src='/images/placeholder-oil.jpg'; this.style.borderRadius='8px';" />
+                        <img src="/images/Oilback.png" alt="Aromaberatung für Familien" class="section-image" onerror="this.src='/images/placeholder-oil.jpg'; this.style.borderRadius='var(--radius-lg)';" />
                     </div>
                     <div class="col-lg-6">
                         <div class="section-content">
-                            <p>
+                            <p class="main-text">
                                 Wohlbefinden und Gesundheit spielen eine zentrale Rolle im Familienleben. Eigenverantwortung für unseren Körper und unser Wohlbefinden zu übernehmen ist ein wichtiger Grundbaustein für unsere Gesundheit.
                             </p>
-                            <p>
+                            <p class="main-text">
                                 In meiner Beratung finden wir gemeinsam Duftmischungen, die genau auf eure Bedürfnisse abgestimmt sind, samt passenden Anwendungsmöglichkeiten. Mein Ziel ist es, die Aromapflege besonders einfach in eure täglichen Routinen und Familienrituale zu integrieren.
                             </p>
-                            <p>
+                            <p class="main-text">
                                 Ich weiß, dass der Gedanke an sich selbst bei vielen Elternteilen oft zu kurz kommt. Der gemeinsame Weg mit Kindern und die Wichtigkeit dieser verantwortungsvollen Aufgabe, unsere Schützlinge im Leben zu begleiten, kann sehr fordernd sein und benötigt viel Kraft und Energie. Deshalb biete ich auch eine ganzheitliche Aromaberatung speziell für euer Wohlbefinden als Eltern an.
                             </p>
                             <div class="service-details">
@@ -509,20 +183,266 @@
     </section>
 
     <!-- Call to Action Section -->
-    <section class="cta-section">
+    <section class="cta-section section">
         <div class="container">
-            <div class="cta-container">
-                <h2 class="cta-title">Beginne deine Aromaerfahrung</h2>
-                <p class="cta-text">
+            <div class="cta-card animate-scaleIn">
+                <h2 class="section-heading text-center">Beginne deine Aromaerfahrung</h2>
+                <div class="divider"></div>
+                <p class="quote text-center">
                     Bist du bereit, die Kraft der ätherischen Öle für dich zu entdecken? Kontaktiere mich für eine persönliche Beratung.
                 </p>
-                <a href="kontakt" class="cta-button">
-                    <i class="fas fa-envelope"></i> Kontakt aufnehmen
-                </a>
+                <div class="cta-container">
+                    <a href="kontakt" class="btn">
+                        <i class="fas fa-envelope"></i> Kontakt aufnehmen
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 </div>
+
+<style>
+    /* Ätherische Öle Page Styles - Updated to match theme.css */
+    
+    /* Hero Section */
+    .oils-hero {
+        background-color: var(--light-green);
+    }
+    
+    .oils-hero .hero-background {
+        background-image: 
+            radial-gradient(circle at 30% 40%, rgba(131, 167, 143, 0.2) 0%, transparent 30%),
+            radial-gradient(circle at 70% 60%, rgba(131, 167, 143, 0.2) 0%, transparent 30%);
+    }
+    
+    /* Introduction Section */
+    .intro-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    .intro-image-container {
+        text-align: center;
+        margin-bottom: var(--space-md);
+    }
+    
+    .intro-image {
+        max-width: 250px;
+        border-radius: 50%;
+        box-shadow: var(--shadow-md);
+        transition: transform var(--transition-medium);
+    }
+    
+    .intro-image:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Benefits Section */
+    .benefit-card {
+        background-color: white;
+        padding: var(--space-md);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        height: 100%;
+        transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    }
+    
+    .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .benefit-icon {
+        font-size: 2.5rem;
+        color: var(--primary-green);
+        margin-bottom: var(--space-sm);
+        text-align: center;
+    }
+    
+    .benefit-title {
+        font-family: var(--heading-font);
+        font-size: 1.5rem;
+        color: var(--primary-green);
+        margin-bottom: var(--space-sm);
+        text-align: center;
+    }
+    
+    .benefit-text {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--corduroy);
+        text-align: center;
+    }
+    
+    .oil-gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-md);
+        margin-top: var(--space-lg);
+    }
+    
+    .oil-item {
+        background-color: white;
+        padding: var(--space-md);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        text-align: center;
+        transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+    }
+    
+    .oil-item:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+        background-color: var(--very-light-green);
+    }
+    
+    .oil-icon {
+        font-size: 2rem;
+        color: var(--primary-green);
+        margin-bottom: var(--space-sm);
+    }
+    
+    .oil-name {
+        font-weight: 600;
+        color: var(--primary-green);
+        margin-bottom: 0.5rem;
+    }
+    
+    .oil-property {
+        font-size: 0.9rem;
+        color: var(--corduroy);
+    }
+    
+    /* Service Sections */
+    .service-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+    }
+    
+    .section-content {
+        padding: 1rem 1rem 1rem 2rem;
+    }
+    
+    .section-image {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-md);
+        transition: transform var(--transition-medium);
+    }
+    
+    .section-image:hover {
+        transform: translateY(-5px);
+    }
+    
+    .service-details {
+        margin-top: var(--space-md);
+        padding: var(--space-md);
+        background-color: var(--very-light-green);
+        border-radius: var(--radius-md);
+        border-left: 3px solid var(--secondary-green);
+    }
+    
+    .detail-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: var(--space-xs);
+    }
+    
+    .detail-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    .detail-item i {
+        font-size: 1.2rem;
+        color: var(--primary-green);
+        margin-right: 1rem;
+        width: 20px;
+        text-align: center;
+    }
+    
+    .detail-item span {
+        font-weight: 500;
+        color: var(--corduroy);
+    }
+    
+    /* CTA Section */
+    .cta-card {
+        background-color: white;
+        border-radius: var(--radius-lg);
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-md);
+        border-top: 4px solid var(--secondary-green);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .cta-container {
+        text-align: center;
+        margin-top: var(--space-md);
+    }
+    
+    /* Responsive Adjustments */
+    @@media (max-width: 992px) {
+        .oil-gallery {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .section-content {
+            padding: 1rem 0;
+            margin-top: 1.5rem;
+        }
+        
+        .intro-card,
+        .service-card,
+        .cta-card {
+            padding: var(--space-md);
+        }
+    }
+    
+    @@media (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+        
+        .hero-tagline {
+            font-size: 1.3rem;
+        }
+        
+        .section-heading {
+            font-size: 1.8rem;
+        }
+        
+        .oil-gallery {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .benefit-title {
+            font-size: 1.3rem;
+        }
+    }
+    
+    @@media (max-width: 576px) {
+        .intro-card,
+        .service-card,
+        .cta-card {
+            padding: var(--space-sm);
+        }
+        
+        .oil-gallery {
+            grid-template-columns: 1fr;
+        }
+        
+        .intro-image {
+            max-width: 200px;
+        }
+    }
+</style>
 
 @code {
     // Component code here
